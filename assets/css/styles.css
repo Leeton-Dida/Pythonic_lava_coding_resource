@@ -1,0 +1,31 @@
+#logo {
+  padding-right: 10px;
+}
+
+body {
+  background: radial-gradient(circle at 3% 25%, rgba(59, 0, 103, 1) 0%, rgba(12, 0, 56, 1) 100%);
+}
+
+#hero_container {
+  padding-top: 30px;
+  max-width: 600px;
+}
+
+.card {
+  max-height: 200px;
+  padding-right: 20px;
+  max-width: 500px;
+}
+
+.card-body {
+}
+
+@media (min-width:992px) {
+  .row-cols-lg-3 > * {
+  }
+}
+
+#accordion-1 {
+  background: #0c0038;
+}
+

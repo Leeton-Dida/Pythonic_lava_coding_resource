@@ -1,0 +1,72 @@
+#accordion-1 a:hover {
+  text-decoration: none;
+}
+
+#accordion-1 .card-header {
+  padding: 0;
+  margin-bottom: 0;
+  border: none;
+}
+
+#accordion-1 .card {
+  border: none;
+  margin-top: 15px;
+}
+
+#accordion-1 p {
+  font-size: 17px;
+}
+
+@media (min-width: 992px) {
+  #accordion-1 p {
+    font-size: 20px;
+  }
+}
+
+#accordion-1 h5 {
+  font-size: 18px;
+}
+
+@media (min-width: 992px) {
+  #accordion-1 h5 {
+    font-size: 20px;
+  }
+}
+
+#accordion-1 .panel-heading .panel-title > a {
+  background-color: #d79640;
+  border: medium none;
+  color: #ffffff;
+  display: block;
+  font-family: Arial,Helvetica,sans-serif;
+  line-height: 28px;
+  padding: 15px 45px 15px 20px;
+  word-wrap: break-word;
+  border-radius: 4px;
+  transition: all .3s;
+}
+
+#accordion-1 .panel-heading .panel-title > a:hover {
+  background-color: #c2873b;
+  transition: all .3s;
+}
+
+#accordion-1 .panel-heading .panel-title > a::after {
+  bottom: 0;
+  content: "▼";
+  font-family: "Roboto",sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: -1px;
+  line-height: 57px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 60px;
+}
+
+#accordion-1 .panel-heading .panel-title > a.collapsed::after {
+  content: "◄";
+}
+
