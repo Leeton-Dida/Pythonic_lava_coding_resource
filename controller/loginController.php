@@ -16,6 +16,8 @@ if (mysqli_num_rows($result) > 0) {
     if ($row['Password'] == $txtPassword) {
         // if the password is correct, set the session variable and redirect to the home page
         $_SESSION['user'] = $txtEmail;
+        #start the session
+        session_start();
         header("Location: ../index.html");
     } else {
         // if the password is incorrect, reload the login page
