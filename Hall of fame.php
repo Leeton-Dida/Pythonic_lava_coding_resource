@@ -60,12 +60,18 @@
                                     <h2 class="accordion-header" role="tab"><button class="accordion-button border rounded border-1 border-dark shadow-lg" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-1" aria-expanded="true" aria-controls="accordion-1 .item-1" style="color: rgb(255,255,255);background: rgb(59,59,59);">Week 1</button></h2>
                                     <div class="accordion-collapse collapse show item-1 bg-dark" role="tabpanel" data-bs-parent="#accordion-1">
                                         <div class="accordion-body">
-                                            <form><div class="form-check">
-    <input id="formCheck-1" class="form-check-input" type="radio" checked name = "week_1" />
-    <label class="form-check-label" for="formCheck-1" style= "color: rgb(0,0,0);">Stuff </label><label style = "margin-left : 10px" >(Visited)</label>
-</div><div class="form-check">
-    <input id="formCheck-3" class="form-check-input" type="radio" name = "week_1"/><label class="form-check-label" for="formCheck-3" style="color: #FFFFFF">Stuff</label></div><div class="form-check">
-    <input id="formCheck-2" class="form-check-input" type="radio" name = "week_1"/><label class="form-check-label" for="formCheck-2" style="color: #FFFFFF;">Stuff</label></div></form>
+                                            <form>
+                                                <div class="form-check">
+                                                    <input id="formCheck-1" class="form-check-input" type="radio" checked name="week_1" />
+                                                    <label class="form-check-label" for="formCheck-1" style="color: rgb(0,0,0);">Stuff </label><label style="margin-left : 10px">(Visited)</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input id="formCheck-3" class="form-check-input" type="radio" name="week_1" /><label class="form-check-label" for="formCheck-3" style="color: #FFFFFF">Stuff</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input id="formCheck-2" class="form-check-input" type="radio" name="week_1" /><label class="form-check-label" for="formCheck-2" style="color: #FFFFFF;">Stuff</label>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -73,12 +79,18 @@
                                     <h2 class="accordion-header" role="tab"><button class="accordion-button collapsed border rounded border-1 border-dark shadow-lg" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-2" aria-expanded="false" aria-controls="accordion-1 .item-2" style="color: rgb(255,255,255);background: rgb(59,59,59);">Week 2</button></h2>
                                     <div class="accordion-collapse collapse item-2" role="tabpanel" data-bs-parent="#accordion-1">
                                         <div class="accordion-body">
-                                            <form><div class="form-check">
-    <input id="formCheck-1" class="form-check-input" type="radio" checked name = "week_1" />
-    <label class="form-check-label" for="formCheck-1" style= "color: rgb(0,0,0);">Stuff</label>
-</div><div class="form-check">
-    <input id="formCheck-3" class="form-check-input" type="radio" name = "week_1"/><label class="form-check-label" for="formCheck-3" style="color: #FFFFFF">Stuff</label></div><div class="form-check">
-    <input id="formCheck-2" class="form-check-input" type="radio" name = "week_1"/><label class="form-check-label" for="formCheck-2" style="color: #FFFFFF;">Stuff</label></div></form>
+                                            <form>
+                                                <div class="form-check">
+                                                    <input id="formCheck-1" class="form-check-input" type="radio" checked name="week_1" />
+                                                    <label class="form-check-label" for="formCheck-1" style="color: rgb(0,0,0);">Stuff</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input id="formCheck-3" class="form-check-input" type="radio" name="week_1" /><label class="form-check-label" for="formCheck-3" style="color: #FFFFFF">Stuff</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input id="formCheck-2" class="form-check-input" type="radio" name="week_1" /><label class="form-check-label" for="formCheck-2" style="color: #FFFFFF;">Stuff</label>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -86,12 +98,18 @@
                                     <h2 class="accordion-header" role="tab"><button class="accordion-button collapsed border rounded border-1 border-dark shadow-lg" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-3" aria-expanded="false" aria-controls="accordion-1 .item-3" style="color: rgb(255,255,255);background: rgb(59,59,59);">Week 3</button></h2>
                                     <div class="accordion-collapse collapse item-3" role="tabpanel" data-bs-parent="#accordion-1">
                                         <div class="accordion-body">
-                                            <form><div class="form-check">
-    <input id="formCheck-1" class="form-check-input" type="radio" checked name = "week_1" />
-    <label class="form-check-label" for="formCheck-1" style= "color: rgb(0,0,0);">Stuff</label>
-</div><div class="form-check">
-    <input id="formCheck-3" class="form-check-input" type="radio" name = "week_1"/><label class="form-check-label" for="formCheck-3" style="color: #FFFFFF">Stuff</label></div><div class="form-check">
-    <input id="formCheck-2" class="form-check-input" type="radio" name = "week_1"/><label class="form-check-label" for="formCheck-2" style="color: #FFFFFF;">Stuff</label></div></form>
+                                            <form>
+                                                <div class="form-check">
+                                                    <input id="formCheck-1" class="form-check-input" type="radio" checked name="week_1" />
+                                                    <label class="form-check-label" for="formCheck-1" style="color: rgb(0,0,0);">Stuff</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input id="formCheck-3" class="form-check-input" type="radio" name="week_1" /><label class="form-check-label" for="formCheck-3" style="color: #FFFFFF">Stuff</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input id="formCheck-2" class="form-check-input" type="radio" name="week_1" /><label class="form-check-label" for="formCheck-2" style="color: #FFFFFF;">Stuff</label>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -99,12 +117,18 @@
                                     <h2 class="accordion-header" role="tab"><button class="accordion-button collapsed border rounded border-1 border-dark shadow-lg" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-4" aria-expanded="false" aria-controls="accordion-1 .item-4" style="color: rgb(255,255,255);background: rgb(59,59,59);">Week 4</button></h2>
                                     <div class="accordion-collapse collapse item-4" role="tabpanel" data-bs-parent="#accordion-1">
                                         <div class="accordion-body">
-                                            <form><div class="form-check">
-    <input id="formCheck-1" class="form-check-input" type="radio" checked name = "week_1" />
-    <label class="form-check-label" for="formCheck-1" style= "color: rgb(0,0,0);">Stuff</label>
-</div><div class="form-check">
-    <input id="formCheck-3" class="form-check-input" type="radio" name = "week_1"/><label class="form-check-label" for="formCheck-3" style="color: #FFFFFF">Stuff</label></div><div class="form-check">
-    <input id="formCheck-2" class="form-check-input" type="radio" name = "week_1"/><label class="form-check-label" for="formCheck-2" style="color: #FFFFFF;">Stuff</label></div></form>
+                                            <form>
+                                                <div class="form-check">
+                                                    <input id="formCheck-1" class="form-check-input" type="radio" checked name="week_1" />
+                                                    <label class="form-check-label" for="formCheck-1" style="color: rgb(0,0,0);">Stuff</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input id="formCheck-3" class="form-check-input" type="radio" name="week_1" /><label class="form-check-label" for="formCheck-3" style="color: #FFFFFF">Stuff</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input id="formCheck-2" class="form-check-input" type="radio" name="week_1" /><label class="form-check-label" for="formCheck-2" style="color: #FFFFFF;">Stuff</label>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -112,12 +136,18 @@
                                     <h2 class="accordion-header" role="tab"><button class="accordion-button collapsed border rounded border-1 border-dark shadow-lg" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-5" aria-expanded="false" aria-controls="accordion-1 .item-5" style="color: rgb(255,255,255);background: rgb(59,59,59);">Week 5</button></h2>
                                     <div class="accordion-collapse collapse item-5" role="tabpanel" data-bs-parent="#accordion-1">
                                         <div class="accordion-body">
-                                            <form><div class="form-check">
-    <input id="formCheck-1" class="form-check-input" type="radio" checked name = "week_1" />
-    <label class="form-check-label" for="formCheck-1" style= "color: rgb(0,0,0);">Stuff</label>
-</div><div class="form-check">
-    <input id="formCheck-3" class="form-check-input" type="radio" name = "week_1"/><label class="form-check-label" for="formCheck-3" style="color: #FFFFFF">Stuff</label></div><div class="form-check">
-    <input id="formCheck-2" class="form-check-input" type="radio" name = "week_1"/><label class="form-check-label" for="formCheck-2" style="color: #FFFFFF;">Stuff</label></div></form>
+                                            <form>
+                                                <div class="form-check">
+                                                    <input id="formCheck-1" class="form-check-input" type="radio" checked name="week_1" />
+                                                    <label class="form-check-label" for="formCheck-1" style="color: rgb(0,0,0);">Stuff</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input id="formCheck-3" class="form-check-input" type="radio" name="week_1" /><label class="form-check-label" for="formCheck-3" style="color: #FFFFFF">Stuff</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input id="formCheck-2" class="form-check-input" type="radio" name="week_1" /><label class="form-check-label" for="formCheck-2" style="color: #FFFFFF;">Stuff</label>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -125,7 +155,7 @@
                             <hr style="margin: 25px 0px 16px;margin-top: 31px;">
                         </li>
                         <li class="nav-item">
-                            <div id="Modal-button-wrapper-1" class="text-center"><a class="shadow-sm bs4_modal_trigger" href="Hall%20of%20fame.html" data-modal-id="bs4_team" style="color: rgb(255,255,255);">hall of fame</a>
+                            <div id="Modal-button-wrapper-1" class="text-center"><a class="shadow-sm bs4_modal_trigger" href="Hall of fame.php" data-modal-id="bs4_team" style="color: rgb(255,255,255);">hall of fame</a>
                                 <hr style="margin: 25px 0px 16px;margin-top: 31px;">
                             </div>
                         </li>
@@ -143,12 +173,38 @@
     <h1 class="display-3 text-center" style="text-align: center;color: rgb(255,255,255);margin-bottom: 42px;margin-top: 42px;">Hall of fame</h1>
     <div style="margin-bottom: 104px;">
         <div class="container text-center" style="margin-top: 55px;">
-            <ol class="shadow-lg" id="hall_of-fame_list" style="color: rgb(255,255,255);text-align: left;padding-left: 0;width: 915px;margin-left: 170px;">
-                <li class="shadow-lg">Item 1</li>
-                <li class="shadow-lg">Item 2</li>
-                <li class="shadow-lg">Item 3</li>
-                <li class="shadow-lg">Item 4</li>
-            </ol>
+            
+
+                <?php
+
+                include './config/connection.php';
+                #collect users name and surname from database and display them in the list in the hall of fame page orderd by the score in descending order
+                $sql = "SELECT * FROM users ORDER BY score DESC";
+                $result = $conn->query($sql);
+                #loop to display the users name and surname in bootstrap table format with table headers
+                if ($result->num_rows > 0) {
+                    echo "<table  class='shadow-lg' id='hall_of-fame_list' style='color: rgb(255,255,255);text-align: left;padding-left: 0;width: 915px;margin-left: 170px;'>
+                    <thead>
+                    <tr>
+                        <th scope='col'>Pos</th>
+                        <th scope='col'>Name</th>
+                        <th scope='col'>Surname</th>
+                        <th scope='col'>Score</th>
+                    </tr>
+                    </thead><tbody>";
+                    $i = 1;
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr><th scope='row'>" . $i . "</th><td>" . $row["Name"] . "</td><td>" . $row["Surname"] . "</td><td>" . $row["score"] . "</td></tr>";
+                        $i++;
+                    }
+                    echo "</tbody></table>";
+                } else {
+                    echo "0 results";
+                }
+
+
+                ?>
+         
         </div>
     </div>
     <div class="card text-center" data-bss-hover-animate="tada" style="width: 33rem;border-top-left-radius: 20px;border-top-right-radius: 20px;border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;box-shadow: 5px 5px 16px 2px rgba(0,0,0,0.25);margin: 14px;min-width: 280px;max-width: 300px;margin-bottom: 20px;background: var(--bs-info);padding-right: 0px;transform: scale(1.25);margin-left: 707px;margin-top: -32px;">

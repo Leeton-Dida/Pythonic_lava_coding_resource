@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include '../config/connection.php';
 
 // get input from $_POST and issert $txtEmail and $txtPassword 
@@ -17,8 +17,8 @@ if (mysqli_num_rows($result) > 0) {
         // if the password is correct, set the session variable and redirect to the home page
         $_SESSION['user'] = $txtEmail;
         #start the session
-        session_start();
-        header("Location: ../index.html");
+
+        header("Location: ../index.php");
     } else {
         // if the password is incorrect, reload the login page
         echo "<script type='text/javascript'>alert('Incorrect Email or password');</script>";
@@ -27,7 +27,7 @@ if (mysqli_num_rows($result) > 0) {
  
 } else {
     // redirect to the Register page
-    header("Location: ../Register.html");
+    header("Location: ../register.php");
 }
 
 mysqli_close($conn);

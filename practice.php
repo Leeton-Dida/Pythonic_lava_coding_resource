@@ -115,7 +115,7 @@
                             <hr style="margin: 25px 0px 16px;margin-top: 31px;">
                         </li>
                         <li class="nav-item">
-                            <div id="Modal-button-wrapper-1" class="text-center"><a class="shadow-sm bs4_modal_trigger" href="Hall%20of%20fame.html" data-modal-id="bs4_team" style="color: rgb(255,255,255);">hall of fame</a>
+                            <div id="Modal-button-wrapper-1" class="text-center"><a class="shadow-sm bs4_modal_trigger" href="Hall of fame.php" data-modal-id="bs4_team" style="color: rgb(255,255,255);">hall of fame</a>
                                 <hr style="margin: 25px 0px 16px;margin-top: 31px;">
                             </div>
                         </li>

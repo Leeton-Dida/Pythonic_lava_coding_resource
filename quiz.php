@@ -193,7 +193,7 @@ session_start();
                         </li>
                         <li class="nav-item">
                             <div id="Modal-button-wrapper-1" class="text-center">
-                                <a class="shadow-sm bs4_modal_trigger" href="Hall%20of%20fame.html" data-modal-id="bs4_team" style="color: rgb(255, 255, 255)">hall of fame</a>
+                                <a class="shadow-sm bs4_modal_trigger" href="Hall of fame.php" data-modal-id="bs4_team" style="color: rgb(255, 255, 255)">hall of fame</a>
                                 <hr style="margin: 25px 0px 16px; margin-top: 31px" />
                             </div>
                         </li>
@@ -264,7 +264,7 @@ session_start();
         Quiz time
     </h1>
     <div class="container" id="quiz_questions_container">
-        <form class="text-start text-white" id="quiz_form" method="get" action="">
+        <form class="text-start text-white" id="quiz_form" method="post" action="controller/quizController.php">
 
             <?php
 
@@ -303,20 +303,20 @@ session_start();
                         </p>
                         <div class='form-check'>
                             <input class='form-check-input' type='radio' id='formCheck-4'
-                                name='question_" . $rdoBtnNameCounter . "_rdoBtn' /><label class='form-check-label' for='formCheck-4 value = '0' '>" . $answer_array[0] . "
+                                name='question_" . $rdoBtnNameCounter . "_rdoBtn' value = '0' /><label class='form-check-label' for='formCheck-4' >" . $answer_array[0] . "
                                 </label>
                         </div>
                         <div class='form-check' style='text-align: justify'>
                             <input class='form-check-input' type='radio' id='formCheck-4'
-                                name='question_" . $rdoBtnNameCounter . "_rdoBtn' /><label class='form-check-label' for='formCheck-4' value = '1'>" . $answer_array[1] . "</label>
+                                name='question_" . $rdoBtnNameCounter . "_rdoBtn' value = '1' /><label class='form-check-label' for='formCheck-4' >" . $answer_array[1] . "</label>
                         </div>
                         <div class='form-check'>
                             <input class='form-check-input' type='radio' id='formCheck-6'
-                                name='question_" . $rdoBtnNameCounter . "_rdoBtn' /><label class='form-check-label' for='formCheck-6' value = '2'>" . $answer_array[2] . "</label>
+                                name='question_" . $rdoBtnNameCounter . "_rdoBtn' value = '2' /><label class='form-check-label' for='formCheck-6' >" . $answer_array[2] . "</label>
                         </div>
                         <div class='form-check'>
                             <input class='form-check-input' type='radio' id='formCheck-5'
-                                name='question_" . $rdoBtnNameCounter . "_rdoBtn' /><label class='form-check-label' for='formCheck-5' value = '3'>" . $answer_array[3] . "</label>
+                                name='question_" . $rdoBtnNameCounter . "_rdoBtn' value = '3' /><label class='form-check-label' for='formCheck-5' >" . $answer_array[3] . "</label>
                         </div>
                     </div>
                 </li>
@@ -341,18 +341,7 @@ session_start();
             </button>
         </form>";
 
-            #store selevted score in variable and print it on submit button
-            if (isset($_GET['submit'])) {
-                for ($i = 0; $i < $count; $i++) {
-                    $answer = $_GET['question_' . $i . '_rdoBtn'] ?? '';
-                    if ($answer == $correct_answer) {
-                        $score++;
-                    }
-                }
-                $a = $_GET['question_0_rdoBtn'] ?? '' ;
-                echo "<script>alert('Your score is: " . $a . "')</script>";
-            }
-
+        
             ?>
 
     </div>
