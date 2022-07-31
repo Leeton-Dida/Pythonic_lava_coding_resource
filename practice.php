@@ -47,69 +47,85 @@
                         <li class="nav-item">
                             <div class="accordion bg-dark bg-gradient border rounded border-1 border-dark shadow-lg" role="tablist" id="accordion-1" style="width: 214px;margin-left: -12px;margin-top: 28px;">
                                 <div class="accordion-item">
-                                    <h2 class="accordion-header" role="tab"><button class="accordion-button border rounded border-1 border-dark shadow-lg" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-1" aria-expanded="true" aria-controls="accordion-1 .item-1" style="color: rgb(255,255,255);background: rgb(59,59,59);">Week 1</button></h2>
-                                    <div class="accordion-collapse collapse show item-1 bg-dark" role="tabpanel" data-bs-parent="#accordion-1">
-                                        <div class="accordion-body">
-                                            <form><div class="form-check">
-    <input id="formCheck-1" class="form-check-input" type="radio" checked name = "week_1" />
-    <label class="form-check-label" for="formCheck-1" style= "color: rgb(0,0,0);">Stuff </label><label style = "margin-left : 10px" >(Visited)</label>
-</div><div class="form-check">
-    <input id="formCheck-3" class="form-check-input" type="radio" name = "week_1"/><label class="form-check-label" for="formCheck-3" style="color: #FFFFFF">Stuff</label></div><div class="form-check">
-    <input id="formCheck-2" class="form-check-input" type="radio" name = "week_1"/><label class="form-check-label" for="formCheck-2" style="color: #FFFFFF;">Stuff</label></div></form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" role="tab"><button class="accordion-button collapsed border rounded border-1 border-dark shadow-lg" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-2" aria-expanded="false" aria-controls="accordion-1 .item-2" style="color: rgb(255,255,255);background: rgb(59,59,59);">Week 2</button></h2>
-                                    <div class="accordion-collapse collapse item-2" role="tabpanel" data-bs-parent="#accordion-1">
-                                        <div class="accordion-body">
-                                            <form><div class="form-check">
-    <input id="formCheck-1" class="form-check-input" type="radio" checked name = "week_1" />
-    <label class="form-check-label" for="formCheck-1" style= "color: rgb(0,0,0);">Stuff</label>
-</div><div class="form-check">
-    <input id="formCheck-3" class="form-check-input" type="radio" name = "week_1"/><label class="form-check-label" for="formCheck-3" style="color: #FFFFFF">Stuff</label></div><div class="form-check">
-    <input id="formCheck-2" class="form-check-input" type="radio" name = "week_1"/><label class="form-check-label" for="formCheck-2" style="color: #FFFFFF;">Stuff</label></div></form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" role="tab"><button class="accordion-button collapsed border rounded border-1 border-dark shadow-lg" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-3" aria-expanded="false" aria-controls="accordion-1 .item-3" style="color: rgb(255,255,255);background: rgb(59,59,59);">Week 3</button></h2>
-                                    <div class="accordion-collapse collapse item-3" role="tabpanel" data-bs-parent="#accordion-1">
-                                        <div class="accordion-body">
-                                            <form><div class="form-check">
-    <input id="formCheck-1" class="form-check-input" type="radio" checked name = "week_1" />
-    <label class="form-check-label" for="formCheck-1" style= "color: rgb(0,0,0);">Stuff</label>
-</div><div class="form-check">
-    <input id="formCheck-3" class="form-check-input" type="radio" name = "week_1"/><label class="form-check-label" for="formCheck-3" style="color: #FFFFFF">Stuff</label></div><div class="form-check">
-    <input id="formCheck-2" class="form-check-input" type="radio" name = "week_1"/><label class="form-check-label" for="formCheck-2" style="color: #FFFFFF;">Stuff</label></div></form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" role="tab"><button class="accordion-button collapsed border rounded border-1 border-dark shadow-lg" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-4" aria-expanded="false" aria-controls="accordion-1 .item-4" style="color: rgb(255,255,255);background: rgb(59,59,59);">Week 4</button></h2>
-                                    <div class="accordion-collapse collapse item-4" role="tabpanel" data-bs-parent="#accordion-1">
-                                        <div class="accordion-body">
-                                            <form><div class="form-check">
-    <input id="formCheck-1" class="form-check-input" type="radio" checked name = "week_1" />
-    <label class="form-check-label" for="formCheck-1" style= "color: rgb(0,0,0);">Stuff</label>
-</div><div class="form-check">
-    <input id="formCheck-3" class="form-check-input" type="radio" name = "week_1"/><label class="form-check-label" for="formCheck-3" style="color: #FFFFFF">Stuff</label></div><div class="form-check">
-    <input id="formCheck-2" class="form-check-input" type="radio" name = "week_1"/><label class="form-check-label" for="formCheck-2" style="color: #FFFFFF;">Stuff</label></div></form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" role="tab"><button class="accordion-button collapsed border rounded border-1 border-dark shadow-lg" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-5" aria-expanded="false" aria-controls="accordion-1 .item-5" style="color: rgb(255,255,255);background: rgb(59,59,59);">Week 5</button></h2>
-                                    <div class="accordion-collapse collapse item-5" role="tabpanel" data-bs-parent="#accordion-1">
-                                        <div class="accordion-body">
-                                            <form><div class="form-check">
-    <input id="formCheck-1" class="form-check-input" type="radio" checked name = "week_1" />
-    <label class="form-check-label" for="formCheck-1" style= "color: rgb(0,0,0);">Stuff</label>
-</div><div class="form-check">
-    <input id="formCheck-3" class="form-check-input" type="radio" name = "week_1"/><label class="form-check-label" for="formCheck-3" style="color: #FFFFFF">Stuff</label></div><div class="form-check">
-    <input id="formCheck-2" class="form-check-input" type="radio" name = "week_1"/><label class="form-check-label" for="formCheck-2" style="color: #FFFFFF;">Stuff</label></div></form>
-                                        </div>
-                                    </div>
+                                <?php
+
+include './config/connection.php';
+
+#get all week names and ids from database and display them in the menu
+$sql = "SELECT * FROM weeks";
+$result = $conn->query($sql);
+$week_names = array();
+$week_id = array();
+$weekCounter = 0;
+$lesson_id = array();
+$content_id = array();
+$lesson_title = array();
+
+
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $week_names[] = $row['week_name'];
+        $week_id[] = $row['id'];
+    }
+}
+
+
+#loop to loop though all week names and display them in the menu
+foreach ($week_names as $week) {
+
+    #get content id for current week from database
+    $sql = "SELECT * FROM content WHERE week_id = '$week_id[$weekCounter]'";
+    $result = $conn->query($sql);
+    $content_id = array();
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $content_id[] = $row['id'];
+        }
+    }
+
+    #loop to collect lesson_title from content table for current week and store it in an array
+    $lesson_title = array();
+    $lesson_id = array();
+    foreach ($content_id as $id) {
+        $sql = "SELECT * FROM content WHERE id = '$id'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $lesson_title[] = $row['lesson_title'];
+                $lesson_id[] = $row['id'];
+            }
+        }
+    }
+
+    $content_id_counter = 0;
+
+    echo "<h2 class='accordion-header' role='ta''>
+    <button class='accordion-button border rounded border-1 border-dark shadow-lg' data-bs-toggle='collapse' data-bs-target='#accordion-1 .item-" . $weekCounter . "' aria-expanded='true' aria-controls='accordion-1 .item-" . $weekCounter . "' style='color: rgb(255,255,255);background: rgb(59,59,59);'>" . $week_names[$weekCounter] . "</button></h2>
+    <div class='accordion-collapse collapse item-" . $weekCounter . " bg-dark' role='tabpanel' data-bs-parent='#accordion-1'>
+        <div class='accordion-body'>
+            <form>";
+
+    foreach ($lesson_title as $title) {
+
+        echo "<div class='form-check'>
+                          <input id='formCheck-1' class='form-check-input' type='radio'  value = ' $content_id[$content_id_counter]' name='week_" . $weekCounter . "' />
+                          <label class='form-check-label' for='formCheck-1' style='color: rgb(0,0,0);'>" . $title . " </label><label style='margin-left : 10px' hidden>(Visited)</label>
+                      </div>";
+        $content_id_counter++;
+    }
+
+    echo "  </form>
+      </div>
+  </div>";
+
+    $weekCounter++;
+}
+
+
+
+?>
                                 </div>
                             </div>
                             <hr style="margin: 25px 0px 16px;margin-top: 31px;">
@@ -149,20 +165,20 @@
     </nav>
     <h1 class="display-3 text-center" style="text-align: center;color: rgb(255,255,255);margin-bottom: 42px;margin-top: 42px;">Practice</h1>
     <div style="margin-bottom: 104px;">
-        <div class="container text-center" style="margin-top: 55px; height: 480px; width: 1000px; " id = "blocklyDiv" >
+        <div class="container text-center" style="margin-top: 55px; height: 480px; width: 1000px; " id="blocklyDiv">
 
             <xml id="toolbox" style="display: none">
                 <category name="Control">
-                  <block type="controls_if"></block>
+                    <block type="controls_if"></block>
                 </category>
                 <category name="Logic">
-                  <block type="logic_compare"></block>
-                  <block type="logic_operation"></block>
-                  <block type="logic_boolean"></block>
+                    <block type="logic_compare"></block>
+                    <block type="logic_operation"></block>
+                    <block type="logic_boolean"></block>
                 </category>
-              </xml>
+            </xml>
 
-             <!-- <img class="border rounded" src="assets/img/website_bg.jpg" height="500px" loading="lazy" style="text-align: center;" width="1000px"> -->
+            <!-- <img class="border rounded" src="assets/img/website_bg.jpg" height="500px" loading="lazy" style="text-align: center;" width="1000px"> -->
         </div>
     </div>
     <div class="container" style="margin-top: -19px;">
@@ -229,8 +245,8 @@
     <script src="assets/js/Customizable-Carousel-swipe-enabled.js"></script>
     <script src="assets/js/Button-Modal-popup-team-member.js"></script>
     <script src="assets/js/Ultimate-Sidebar-Menu-BS5.js"></script>
-    
-    
+
+
 
 </body>
 
