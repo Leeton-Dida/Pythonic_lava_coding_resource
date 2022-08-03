@@ -40,85 +40,85 @@
                         <li class="nav-item">
                             <div class="accordion bg-dark bg-gradient border rounded border-1 border-dark shadow-lg" role="tablist" id="accordion-1" style="width: 214px;margin-left: -12px;margin-top: 28px;">
                                 <div class="accordion-item">
-                                <?php
+                                    <?php
 
-include './config/connection.php';
+                                    include './config/connection.php';
 
-#get all week names and ids from database and display them in the menu
-$sql = "SELECT * FROM weeks";
-$result = $conn->query($sql);
-$week_names = array();
-$week_id = array();
-$weekCounter = 0;
-$lesson_id = array();
-$content_id = array();
-$lesson_title = array();
-
-
-
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $week_names[] = $row['week_name'];
-        $week_id[] = $row['id'];
-    }
-}
+                                    #get all week names and ids from database and display them in the menu
+                                    $sql = "SELECT * FROM weeks";
+                                    $result = $conn->query($sql);
+                                    $week_names = array();
+                                    $week_id = array();
+                                    $weekCounter = 0;
+                                    $lesson_id = array();
+                                    $content_id = array();
+                                    $lesson_title = array();
 
 
-#loop to loop though all week names and display them in the menu
-foreach ($week_names as $week) {
 
-    #get content id for current week from database
-    $sql = "SELECT * FROM content WHERE week_id = '$week_id[$weekCounter]'";
-    $result = $conn->query($sql);
-    $content_id = array();
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            $week_names[] = $row['week_name'];
+                                            $week_id[] = $row['id'];
+                                        }
+                                    }
 
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $content_id[] = $row['id'];
-        }
-    }
 
-    #loop to collect lesson_title from content table for current week and store it in an array
-    $lesson_title = array();
-    $lesson_id = array();
-    foreach ($content_id as $id) {
-        $sql = "SELECT * FROM content WHERE id = '$id'";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $lesson_title[] = $row['lesson_title'];
-                $lesson_id[] = $row['id'];
-            }
-        }
-    }
+                                    #loop to loop though all week names and display them in the menu
+                                    foreach ($week_names as $week) {
 
-    $content_id_counter = 0;
+                                        #get content id for current week from database
+                                        $sql = "SELECT * FROM content WHERE week_id = '$week_id[$weekCounter]'";
+                                        $result = $conn->query($sql);
+                                        $content_id = array();
 
-    echo "<h2 class='accordion-header' role='ta''>
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                $content_id[] = $row['id'];
+                                            }
+                                        }
+
+                                        #loop to collect lesson_title from content table for current week and store it in an array
+                                        $lesson_title = array();
+                                        $lesson_id = array();
+                                        foreach ($content_id as $id) {
+                                            $sql = "SELECT * FROM content WHERE id = '$id'";
+                                            $result = $conn->query($sql);
+                                            if ($result->num_rows > 0) {
+                                                while ($row = $result->fetch_assoc()) {
+                                                    $lesson_title[] = $row['lesson_title'];
+                                                    $lesson_id[] = $row['id'];
+                                                }
+                                            }
+                                        }
+
+                                        $content_id_counter = 0;
+
+                                        echo "<h2 class='accordion-header' role='ta''>
     <button class='accordion-button border rounded border-1 border-dark shadow-lg' data-bs-toggle='collapse' data-bs-target='#accordion-1 .item-" . $weekCounter . "' aria-expanded='true' aria-controls='accordion-1 .item-" . $weekCounter . "' style='color: rgb(255,255,255);background: rgb(59,59,59);'>" . $week_names[$weekCounter] . "</button></h2>
     <div class='accordion-collapse collapse item-" . $weekCounter . " bg-dark' role='tabpanel' data-bs-parent='#accordion-1'>
         <div class='accordion-body'>
             <form>";
 
-    foreach ($lesson_title as $title) {
+                                        foreach ($lesson_title as $title) {
 
-        echo "<div class='form-check'>
+                                            echo "<div class='form-check'>
                           <input id='formCheck-1' class='form-check-input' type='radio'  value = ' $content_id[$content_id_counter]' name='week_" . $weekCounter . "' />
                           <label class='form-check-label' for='formCheck-1' style='color: rgb(0,0,0);'>" . $title . " </label><label style='margin-left : 10px' hidden>(Visited)</label>
                       </div>";
-        $content_id_counter++;
-    }
+                                            $content_id_counter++;
+                                        }
 
-    echo "  </form>
+                                        echo "  </form>
       </div>
   </div>";
 
-    $weekCounter++;
-}
+                                        $weekCounter++;
+                                    }
 
 
 
-?>
+                                    ?>
                                 </div>
                             </div>
                             <hr style="margin: 25px 0px 16px;margin-top: 31px;">

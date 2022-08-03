@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +30,7 @@ session_start();
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/Ultimate-Accordion-with-caret-icon.css">
     <link rel="stylesheet" href="assets/css/Ultimate-Sidebar-Menu-BS5.css">
+
 </head>
 
 <body>
@@ -44,7 +46,6 @@ session_start();
                         <li class="nav-item">
                             <div class="accordion bg-dark bg-gradient border rounded border-1 border-dark shadow-lg" role="tablist" id="accordion-1" style="width: 214px;margin-left: -12px;margin-top: 28px;">
                                 <div class="accordion-item">
-
                                     <?php
 
                                     include './config/connection.php';
@@ -100,30 +101,48 @@ session_start();
                                         $content_id_counter = 0;
 
                                         echo "<h2 class='accordion-header' role='ta''>
-                                        <button class='accordion-button border rounded border-1 border-dark shadow-lg' data-bs-toggle='collapse' data-bs-target='#accordion-1 .item-" . $weekCounter . "' aria-expanded='true' aria-controls='accordion-1 .item-" . $weekCounter . "' style='color: rgb(255,255,255);background: rgb(59,59,59);'>" . $week_names[$weekCounter] . "</button></h2>
-                                        <div class='accordion-collapse collapse item-" . $weekCounter . " bg-dark' role='tabpanel' data-bs-parent='#accordion-1'>
-                                            <div class='accordion-body'>
-                                                <form>";
+                                            <button class='accordion-button border rounded border-1 border-dark shadow-lg' data-bs-toggle='collapse' data-bs-target='#accordion-1 .item-" . $weekCounter . "' aria-expanded='true' aria-controls='accordion-1 .item-" . $weekCounter . "' style='color: rgb(255,255,255);background: rgb(59,59,59);'>" . $week_names[$weekCounter] . "</button></h2>
+                                            <div class='accordion-collapse collapse item-" . $weekCounter . " bg-dark' role='tabpanel' data-bs-parent='#accordion-1'>
+                                                <div class='accordion-body'>
+                                                    <form>";
 
                                         foreach ($lesson_title as $title) {
+                                            $contentId = $content_id[$content_id_counter];
 
                                             echo "<div class='form-check'>
-                                                              <input id='formCheck-1' class='form-check-input' type='radio'  value = ' $content_id[$content_id_counter]' name='week_" . $weekCounter . "' />
-                                                              <label class='form-check-label' for='formCheck-1' style='color: rgb(0,0,0);'>" . $title . " </label><label style='margin-left : 10px' hidden>(Visited)</label>
-                                                          </div>";
+                                            <input id='formCheck-1' class='form-check-input' type='radio'  value = ' $contentId' name='week_" . $weekCounter . "' />
+                                            <a  href = 'controller/contentController.php'  class='form-check-label' '> </a>
+                                            <button id = '$contentId' onclick = 'submitForm() 'type='button'  class='btn btn-outline-light' for='formCheck-1' style='color: rgb(255,255,255);'>" . $title . ': ' . $contentId . "</button><label style='margin-left : 10px' hidden>(Visited)</label>
+                                        </div>";
                                             $content_id_counter++;
                                         }
 
                                         echo "  </form>
-                                          </div>
-                                      </div>";
+                                        </div>
+                                    </div>";
 
                                         $weekCounter++;
                                     }
 
+                                    #hidden input to store the content id of the selected lesson
 
-
+                                    echo "<form  action = 'controller/contentController.php' method='post' id = 'weeklyMenu'>
+                                            <input type='hidden' id='hiddenContentId' name='contentId' value=''>
+                                        </form>";
                                     ?>
+
+                                    <script>
+                                        function submitForm() {
+                                            //get id of clicked button
+                                            var contentId = event.target.id;
+                                            //set value of hidden input to id of clicked button
+                                            document.getElementById('hiddenContentId').value = contentId;
+                                            <?php $_SESSION['contentId'] = $contentId; ?>
+                                            
+                                            document.getElementById("weeklyMenu").submit();
+                                        }
+                                    </script>
+
                                 </div>
 
                             </div>
@@ -162,13 +181,13 @@ session_start();
             </div>
         </div>
     </nav>
-    <h1 class="display-3 text-center" style="text-align: center;color: rgb(255,255,255);margin-bottom: 42px;margin-top: 42px;">Week 1 course work</h1>
+    <h1 id='weekHeading' class="display-3 text-center" style="text-align: center;color: rgb(255,255,255);margin-bottom: 42px;margin-top: 42px; ">Pythonic lava</h1>
     <div>
         <div class="container text-center" style="margin-top: 55px;"><img class="border rounded" src="assets/img/website_bg.jpg" height="500px" loading="lazy" style="text-align: center;" width="1000px"></div>
     </div>
     <div class="container text-center">
         <h2 class="display-5 text-center" style="text-align: center;color: rgb(255,255,255);margin-bottom: 42px;margin-top: 78px;">Tasks</h2>
-        <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dapibus felis et libero scelerisque, sed aliquet nulla tincidunt. Quisque lorem nisl, semper vitae mattis nec, vestibulum nec risus. Sed ut volutpat tortor, ut sodales diam. Integer at tristique turpis. Integer orci leo, fringilla ac aliquet vitae, condimentum non lorem. Duis velit ex, aliquam vel pellentesque et, dictum vitae mauris. Vestibulum commodo luctus tortor eu ultrices. Fusce commodo enim non eros consectetur maximus. Donec venenatis dolor ut vestibulum fermentum. Aliquam malesuada sit amet nulla id imperdiet. Suspendisse maximus purus et ligula maximus, a luctus ante fringilla.<br><br></p><button class="btn btn-primary text-truncate border rounded border-light shadow-none float-end tenant-continue-btn" data-bss-hover-animate="pulse" type="button" style="margin-right: 29px;margin-top: 16px;background: #360062;">Submit assignment&nbsp;<i class="fas fa-greater-than continue-icon"></i></button>
+        <p id="taskDescription" class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dapibus felis et libero scelerisque, sed aliquet nulla tincidunt. Quisque lorem nisl, semper vitae mattis nec, vestibulum nec risus. Sed ut volutpat tortor, ut sodales diam. Integer at tristique turpis. Integer orci leo, fringilla ac aliquet vitae, condimentum non lorem. Duis velit ex, aliquam vel pellentesque et, dictum vitae mauris. Vestibulum commodo luctus tortor eu ultrices. Fusce commodo enim non eros consectetur maximus. Donec venenatis dolor ut vestibulum fermentum. Aliquam malesuada sit amet nulla id imperdiet. Suspendisse maximus purus et ligula maximus, a luctus ante fringilla.<br><br></p><button class="btn btn-primary text-truncate border rounded border-light shadow-none float-end tenant-continue-btn" data-bss-hover-animate="pulse" type="button" style="margin-right: 29px;margin-top: 16px;background: #360062;">Submit assignment&nbsp;<i class="fas fa-greater-than continue-icon"></i></button>
     </div>
     <div id="footer">
         <footer class="text-white bg-dark" style="margin-top: 76px;">
@@ -219,6 +238,10 @@ session_start();
     <script src="assets/js/Customizable-Carousel-swipe-enabled.js"></script>
     <script src="assets/js/Button-Modal-popup-team-member.js"></script>
     <script src="assets/js/Ultimate-Sidebar-Menu-BS5.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="assets/js/contentController.js"></script>
 </body>
 
 </html>
