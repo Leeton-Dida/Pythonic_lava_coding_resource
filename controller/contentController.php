@@ -14,12 +14,16 @@ $task_description = $row['task_description'];
 //collect lesson_title from the database
 $lesson_title = $row['lesson_title'];
 
-echo $content_id;
-echo $lesson_title;
-echo $task_description;
-#store the content in the session variable
-$_SESSION['content_id'] = $content_id;
-$_SESSION['lesson_title'] = $lesson_title;
-$_SESSION['task_description'] = $task_description;
+//redirect to content.php with the task_description and lesson_title as session variables
+header("Location: ../content.php?task_description=$task_description&lesson_title=$lesson_title");
+
+
+// echo $content_id;
+// echo $lesson_title;
+// echo $task_description;
+// #store the content in the session variable
+// $_SESSION['content_id'] = $content_id;
+// $_SESSION['lesson_title'] = $lesson_title;
+// $_SESSION['task_description'] = $task_description;
 
 ?>

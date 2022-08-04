@@ -1,23 +1,15 @@
 
-// //function to update the weekHeading of the content page
-// function updateContent (weekHeading, taskHeading) {
-//         var weekHeading = document.getElementById("weekHeading");
-//     weekHeading.innerHTML = weekHeading + ": " + taskHeading;
+
+//on first load, load weekHeading and taskDescription elements
+// loadWeekHeadingAndTaskDescription();
+
+// //function to load weekHeading and taskDescription elements after the page is loaded
+// function loadWeekHeadingAndTaskDescription() {
+//     var weekHeading = document.getElementById("weekHeading");
+//     var taskDescription = document.getElementById("taskDescription");
+//     //if the weekHeading and taskDescription elements are not null, load the weekHeading and taskDescription elements
+//     if (weekHeading.innerHTML != null && taskDescription.innerHTML != null) {
+//     weekHeading.innerHTML = "Course work";
+//     taskDescription.innerHTML =  "Start a lesson to see its task breif.";
+//     }
 // }
-
-
-// //function to update the weekHeading of the content page
-// function updateContent ( ) {
-//         var weekHeading = document.getElementById("weekHeading");
-//     weekHeading.innerHTML = "weekHeading" ;
-// }
-
-//onclick listener radio buttons to update the weekHeading of the content page
-function updateContent ( $title ) {
-        var weekHeading = document.getElementById("weekHeading");
-    weekHeading.innerHTML = $title ;
-}
-
-//store session data in local storage
-function storeSessionData ( ) {
-}

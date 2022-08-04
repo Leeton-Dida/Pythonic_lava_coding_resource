@@ -16,7 +16,11 @@ if (mysqli_num_rows($result) > 0) {
     if ($row['Password'] == $txtPassword) {
         // if the password is correct, set the session variable and redirect to the home page
         $_SESSION['user'] = $txtEmail;
-        #start the session
+        //store user id in session variable
+        $_SESSION['user_id'] = $row['User_ID'];
+        //store user name and surname in session variable
+        $_SESSION['user_name'] = $row['Name'];
+        $_SESSION['user_surname'] = $row['Surname'];
 
         header("Location: ../index.php");
     } else {
