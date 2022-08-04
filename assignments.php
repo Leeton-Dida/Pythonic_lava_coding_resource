@@ -43,11 +43,11 @@
             $week_name = array();
 
             //get week id from assignment table
-            $sql = "SELECT * FROM assignment";
+            $sql = "SELECT * FROM weeks";
             $result = mysqli_query($conn, $sql);
             while ($row = mysqli_fetch_assoc($result)) {
-                $week_id = $row['week_id'];
-                $assignment_ids[] = $row['id'];
+                $week_id = $row['id'];
+                $assignment_ids[] = $row['assignment_id'];
             }
 
 
@@ -60,26 +60,26 @@
                 while ($row = mysqli_fetch_assoc($result)) {
                     $descriptions[] = $row['description'];
 
-                //get all week names from week table where week_id is equal to week_id from assignment table     
-                $sql = "SELECT * FROM weeks WHERE id ";
-                $result = mysqli_query($conn, $sql);
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $week_name[] = $row['week_name'];
-                }
+                    //get all week names from week table where week_id is equal to week_id from assignment table     
+                    $sql = "SELECT * FROM weeks WHERE id ";
+                    $result = mysqli_query($conn, $sql);
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $week_name[] = $row['week_name'];
+                    }
 
-                //collect complete from user_assignment table where assignment_id is equal to id from assignment table
-                $sql = "SELECT * FROM user_assignment WHERE assignment_id='$id'";
-                $result = mysqli_query($conn, $sql);
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $complete[] = $row['complete'];
-                }
+                    //collect complete from user_assignment table where assignment_id is equal to id from assignment table
+                    $sql = "SELECT * FROM user_assignment WHERE assignment_id='$id'";
+                    $result = mysqli_query($conn, $sql);
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $complete[] = $row['complete'];
+                    }
 
                     echo "  <div class='accordion-item'>
                 <h2 class='accordion-header panel-title mb-0' role='tab'><button class='accordion-button text-center text-white bg-dark border rounded border-secondary shadow-lg collapsed' data-bs-toggle='collapse' data-bs-target='#accordion-2 .item-" . $weekCounter . "' aria-expanded='true' aria-controls='accordion-2 .item-" . $weekCounter . "'><i class='fa fa-comments'></i>&nbsp;" . $week_name[$weekCounter] . "<br></button></h2>
                 <div class='accordion-collapse collapse item-" . $weekCounter . "' role='tabpanel' data-bs-parent='#accordion-2'>
 
                     <div class='accordion-body'>
-                        <p class='text-white'><strong>Assignment breif:</strong> " . $descriptions[$weekCounter] . "</p><label class='form-label text-white'>Mark: Not Marked</label><button class='btn btn-primary text-truncate bg-dark border rounded border-light shadow-none float-end tenant-continue-btn' data-bss-hover-animate='pulse' type='button'>Continue&nbsp;<i class='fas fa-greater-than continue-icon'></i></button>
+                        <p class='text-white'><strong>Assignment breif:</strong> " . $descriptions[$weekCounter] . "</p><label class='form-label text-white'>Mark: Not Marked</label><button id = " . $id . " class='btn btn-primary text-truncate bg-dark border rounded border-light shadow-none float-end tenant-continue-btn' data-bss-hover-animate='pulse' type='button' onclick = 'goToAssignment()'>Continue&nbsp;<i class='fas fa-greater-than continue-icon'></i></button>
                     </div>
 
                 </div>
@@ -90,7 +90,14 @@
             }
 
             ?>
-
+            <script>
+                //function to redirect to assignment page
+                function goToAssignment() {
+                    var id = event.target.id;
+                    window.location.href = "assignment work.php?id=" + id;
+                    
+                }
+            </script>
         </div>
     </div>
     <div id="footer">
