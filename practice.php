@@ -26,11 +26,6 @@
     <link rel="stylesheet" href="assets/css/Ultimate-Accordion-with-caret-icon.css">
     <link rel="stylesheet" href="assets/css/Ultimate-Sidebar-Menu-BS5.css">
 
-    <script src="assets/google-blockly-6132229/blocks_compressed.js"></script>
-    <script src="assets/google-blockly-6132229/blockly_compressed.js"></script>
-    <script src="assets/google-blockly-6132229/msg/js/en.js"></script>
-    <script type="module" src="assets/js/blockly.js"></script>
-
 
 </head>
 
@@ -42,20 +37,10 @@
 
     <h1 class="display-3 text-center" style="text-align: center;color: rgb(255,255,255);margin-bottom: 42px;margin-top: 42px;">Practice</h1>
     <div style="margin-bottom: 104px;">
-        <div class="container text-center" style="margin-top: 55px; height: 480px; width: 1000px; " id="blocklyDiv">
+        <div class="container text-center" style="margin-top: 55px;">
 
-            <xml id="toolbox" style="display: none">
-                <category name="Control">
-                    <block type="controls_if"></block>
-                </category>
-                <category name="Logic">
-                    <block type="logic_compare"></block>
-                    <block type="logic_operation"></block>
-                    <block type="logic_boolean"></block>
-                </category>
-            </xml>
+        <?php include "./layouts/blockly.php"?>
 
-            <!-- <img class="border rounded" src="assets/img/website_bg.jpg" height="500px" loading="lazy" style="text-align: center;" width="1000px"> -->
         </div>
     </div>
     <div class="container" style="margin-top: -19px;">
@@ -110,11 +95,6 @@
             </div>
         </footer>
     </div>
-    <!-- <script>
-        var demoWorkspace = Blockly.inject('blocklyDiv',
-            {media: '../../media/',
-             toolbox: document.getElementById('toolbox')});
-      </script> -->
 
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>

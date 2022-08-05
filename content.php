@@ -48,18 +48,18 @@ $lesson_name = (string) @$_GET['lesson_title'] ?? '';
                                                                                                                                                         echo "Course work";
                                                                                                                                                     }; ?></h1>
     <div>
-        <div class="container text-center" style="margin-top: 55px;"><img class="border rounded" src="assets/img/website_bg.jpg" height="500px" loading="lazy" style="text-align: center;" width="1000px"></div>
+        <div class="container text-center" style="margin-top: 55px;"><?php include "./layouts/blockly.php"?></div>
     </div>
     <div class="container text-center">
         <h2 class="display-5 text-center" style="text-align: center;color: rgb(255,255,255);margin-bottom: 42px;margin-top: 78px;">Tasks</h2>
-        <p id="taskDescription" class="text-white"><?php if ($lesson_description != null) {
+        <p id="taskDescription" class="text-white" style="margin-bottom: 20px"><?php if ($lesson_description != null) {
                                                         echo $lesson_description;
                                                     } else {
                                                         echo "Start a lesson to see its task breif.";
-                                                    }; ?><br><br></p><button class="btn btn-primary text-truncate border rounded border-light shadow-none float-end tenant-continue-btn" data-bss-hover-animate="pulse" type="button" style="margin-right: 29px;margin-top: 16px;margin-bottom: 20px;background: #360062;">Submit assignment&nbsp;<i class="fas fa-greater-than continue-icon"></i></button>
+                                                    }; ?><br><br></p><button class="btn btn-primary text-truncate border rounded border-light shadow-none float-end tenant-continue-btn" data-bss-hover-animate="pulse" type="button" style="margin-right: 29px;margin-top: 30px;margin-bottom: 50px;background: #360062;">Submit assignment&nbsp;<i class="fas fa-greater-than continue-icon"></i></button>
     </div>
     <div id="footer">
-        <footer class="text-white bg-dark" style="margin-top: 76px;">
+        <footer class="text-white bg-dark" style="margin-top: 150px;">
             <div class="container py-4 py-lg-5" style="padding-top: 0;">
                 <div class="row justify-content-center" style="margin-left: 0;margin-right: 0;">
                     <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column item">

@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "blockly": "^5.20210325.0" ,
-    "type": "module"
+    "blockly": "^5.20210325.1"
   }
 }
