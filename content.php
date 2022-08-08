@@ -130,7 +130,7 @@ $selected_content_id = (string) @$_GET['content_id'] ?? '';
             var selected_content_id = document.getElementById("selected_content_id").value;
             //if content is not selected, show error message
             if (selected_content_id == '') {
-                alert("Please start a content first");
+                alert("Please start a topic first");
             } else {
                 var code = document.getElementById("generatedCode").value;
                 if (code == "") {

@@ -1,7 +1,6 @@
 <?php
+
 include 'layouts/side navbar.php';
-
-
 ?>
 
 
@@ -69,13 +68,6 @@ include 'layouts/side navbar.php';
                     $result = mysqli_query($conn, $sql);
                     while ($row = mysqli_fetch_assoc($result)) {
                         $week_name[] = $row['week_name'];
-                    }
-
-                    //collect complete from user_assignment table where assignment_id is equal to id from assignment table
-                    $sql = "SELECT * FROM user_assignment WHERE assignment_id='$id'";
-                    $result = mysqli_query($conn, $sql);
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $complete[] = $row['complete'];
                     }
 
                     //select all from student_assignment where student_id = 1 and assignment_id = id 

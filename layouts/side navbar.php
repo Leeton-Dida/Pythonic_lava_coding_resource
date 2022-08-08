@@ -1,8 +1,17 @@
+<?php
+include './config/connection.php';
+$username = @$_SESSION['user_name'];
+$surname = @$_SESSION['user_surname'];
+$user_id = @$_SESSION['user_id'];
+?>
+
+
+
 <div><a class="btn btn-primary btn-customized open-menu" role="button" style="margin-top: 2px;padding-top: 9px;padding-bottom: 10px;margin-right: 1687px;"><i class="fa fa-navicon"></i>&nbsp;Menu</a>
-    <div class="sidebar" style="background: rgb(33,37,41);"><img class="rounded" loading="lazy" src="assets/img/bs4_team_01.jpg" style="text-align: center;border-style: none;transform: scale(0.97);max-height: 100px;max-width: 100px;margin-left: 60px;margin-top: 19px;">
+    <div class="sidebar" style="background: rgb(33,37,41);"><img class="rounded" loading="lazy" src="assets/img/bs4_team_01.jpg" style="text-align: center;border-style: none;transform: scale(0.97);max-height: 100px;max-width: 100px;margin-left: 20px;margin-top: 19px;">
         <div class="dismiss"><i class="fa fa-caret-left"></i></div>
         <div class="brand" style="padding: 15px 20px;">
-            <h5 class="text-start">Name Surname</h5>
+            <h5 class="text-start"><?php echo $username .' '. $surname[0]?></h5>
         </div>
         <nav class="navbar navbar-dark navbar-expand">
             <div class="container-fluid">
@@ -13,7 +22,7 @@
                             <div class="accordion-item">
                                 <?php
 
-                                include './config/connection.php';
+                                
                                 // $student_id = $_SESSION['id'] ?? 0;
                                 $student_id = 1; // for testing remove this line later on
 
@@ -145,7 +154,7 @@
                             <hr style="margin: 25px 0px 16px;margin-top: 31px;">
                         </div>
                     </li>
-                    <li class="nav-item"><a class="btn btn-primary text-truncate shadow float-end tenant-continue-btn" role="button" data-bss-hover-animate="pulse" style="margin-right: 45px;margin-top: 99px;background: rgba(51,51,51,0.2);width: 103px;" href="login.php">Log out&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-logout continue-icon" style="transform: scale(1.09);">
+                    <li class="nav-item"><a class="btn btn-primary text-truncate shadow float-end tenant-continue-btn" role="button" data-bss-hover-animate="pulse" style="margin-right: 45px;margin-top: 99px;background: rgba(51,51,51,0.2);width: 103px;" onclick = <?php logout();?> >Log out&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-logout continue-icon" style="transform: scale(1.09);">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
                                 <path d="M7 12h14l-3 -3m0 6l3 -3"></path>
@@ -173,3 +182,14 @@
         </div>
     </div>
 </nav>
+
+<?php
+#function to logout and destroy session and redirect to login page
+function logout()
+{
+    session_destroy();
+    header("Location: login.php");
+}
+
+// js function to logout and destroy session and redirect to login page
+?>
