@@ -15,8 +15,7 @@ $task_description = $row['task_description'];
 $lesson_title = $row['lesson_title'];
 
 //redirect to content.php with the task_description and lesson_title as session variables
-header("Location: ../content.php?task_description=$task_description&lesson_title=$lesson_title");
-
+header("Location: ../content.php?task_description=$task_description&lesson_title=$lesson_title&content_id=$content_id");
 
 
 ?>

@@ -22,6 +22,8 @@
 
   <p>
     <!-- <button onclick="showCode()">Show Python</button> -->
+    <button onclick="clearCode()" class="btn btn-primary text-truncate border rounded border-light shadow-none float-end tenant-continue-btn" data-bss-hover-animate="pulse" type="button" style="background: #360062; margin-right: 15px;">Clear</button>
+    <button onclick="copyCode()" class="btn btn-primary text-truncate border rounded border-light shadow-none float-end tenant-continue-btn" data-bss-hover-animate="pulse" type="button" style="background: #360062; margin-right: 15px;">Copy</button>
     <button onclick="showCode()" class="btn btn-primary text-truncate border rounded border-light shadow-none float-end tenant-continue-btn" data-bss-hover-animate="pulse" type="button" style="background: #360062; margin-right: 15px;">Show code</button>
     <!-- <button onclick="runCode()">Run Python</button> -->
   </p>
@@ -30,12 +32,14 @@
 
 <div class="container text-center" style="margin-top: 55px;">
   <!-- textarea to receive generated code -->
+  <form action="functions/student functions.php" id="generatedCodeForm" method="get">
   <textarea id="generatedCode" style="width: 25%; height: 550px; float: right; resize:none" readonly placeholder="                    Your code is here"></textarea>
+  </form>
 
 <div id="blocklyDiv" style="height: 550px; width: 1000px; margin-bottom: 50px;"></div> 
-<p style="color: white;"><span>Copy your code into the environment below to run it.</span></p>
+<p style="color: white;"><span>Paste your code into the environment below to test it.</span></p>
   <!-- python interpreter without blocks -->
-  <iframe id = "trinketInterpreter" src="https://trinket.io/embed/python/1238a62f4d?toggleCode=true&runOption=run"  style="margin: top 50px;" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+  <iframe id = "trinketInterpreter" src="https://trinket.io/embed/python/1238a62f4d?toggleCode=true&runOption=run"  style="margin: top 50px; " width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
 </div>
 
@@ -461,6 +465,25 @@
 
     demoWorkspace.addChangeListener(onchange);
     onchange();
+
+    //fintion to clear result text area 
+    function clearCode() {
+      document.getElementById('generatedCode').value = "";
+    }
+
+    //function to copy code to clipboard
+    function copyCode() {
+      var copyText = document.getElementById("generatedCode");
+      copyText.select();
+      copyText.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+
+      if (copyText.value == "") {
+        alert("Please generate code first.");
+      } else {
+        alert("Code copied to clipboard.");
+      }
+    }
   </script>
 
 

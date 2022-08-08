@@ -14,6 +14,8 @@
                                 <?php
 
                                 include './config/connection.php';
+                                // $student_id = $_SESSION['id'] ?? 0;
+                                $student_id = 1; // for testing remove this line later on
 
                                 #get all week names and ids from database and display them in the menu
                                 $sql = "SELECT * FROM weeks";
@@ -24,6 +26,7 @@
                                 $lesson_id = array();
                                 $content_id = array();
                                 $lesson_title = array();
+                                $student_content_id = array();
 
 
 
@@ -64,6 +67,17 @@
                                         }
                                     }
 
+                                    #loop to collect all content_id from student_content where student_id is equal to current student_id and store it in an array
+                                    foreach ($content_id as $id) {
+                                        $sql = "SELECT * FROM student_content WHERE student_id = '$student_id' AND content_id = '$id'";
+                                        $result = $conn->query($sql);
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                $student_content_id[] = $row['content_id'];
+                                            }
+                                        }
+                                    }
+
                                     $content_id_counter = 0;
 
                                     echo "<h2 class='accordion-header' role='ta''>
@@ -77,7 +91,19 @@
 
                                         echo "<div class='form-check'>
                                                 
-                                                <button id = '$contentId' onclick = 'submitForm() 'type='button'  class='btn btn-outline-light' for='formCheck-1' style='color: rgb(255,255,255); background: #3B3B3B'>" . $title . ': ' . $contentId . "</button><label style='margin-left : 10px' hidden>(Visited)</label>
+                                                <button id = '$contentId' onclick = 'submitForm()' type='button'  class='btn btn-outline-light' for='formCheck-1' style='color: rgb(255,255,255); background: #3B3B3B'>" . $title . ': ' . $contentId . "</button>
+                                                
+                                                <label id = 'status' style='margin-left : 10px'> ";
+                                                
+                                                if (in_array($contentId, $student_content_id)) {
+                                                    echo "Completed";
+                                                } else {
+                                                    echo "Not completed";
+                                                }
+                                                
+                                                
+                                                echo "</label>
+
                                             </div>";
                                         $content_id_counter++;
                                     }
@@ -106,7 +132,7 @@
 
                             </div>
                         </div>
-                        
+
                         <!-- #hidden input to store the content id of the selected lesson -->
                         <form action='controller/contentController.php' method='post' id='weeklyMenu'>
                             <input type='hidden' id='hiddenContentId' name='contentId' value=''>

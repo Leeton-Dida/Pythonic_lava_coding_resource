@@ -17,7 +17,7 @@ if (mysqli_num_rows($result) > 0) {
         // if the password is correct, set the session variable and redirect to the home page
         $_SESSION['user'] = $txtEmail;
         //store user id in session variable
-        $_SESSION['user_id'] = $row['User_ID'];
+        $_SESSION['user_id'] = $row['id'];
         //store user name and surname in session variable
         $_SESSION['user_name'] = $row['Name'];
         $_SESSION['user_surname'] = $row['Surname'];

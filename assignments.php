@@ -1,4 +1,8 @@
-<?php include 'layouts/side navbar.php' ?>
+<?php
+include 'layouts/side navbar.php';
+
+
+?>
 
 
 <!DOCTYPE html>
@@ -74,12 +78,46 @@
                         $complete[] = $row['complete'];
                     }
 
+                    //select all from student_assignment where student_id = 1 and assignment_id = id 
+                    $sql = "SELECT * FROM student_assignment WHERE student_id='$student_id' AND assignment_id='$id'";
+                    $result = mysqli_query($conn, $sql);
+                    if ($resultCheck > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $mark = $row['mark'];
+                            $completed_assignment_ids = $row['assignment_id'];
+                            $submitted = $row['submitted'];
+                        }
+                    } else {
+                        $mark = "";
+                    }
+
+
                     echo "  <div class='accordion-item'>
                 <h2 class='accordion-header panel-title mb-0' role='tab'><button class='accordion-button text-center text-white bg-dark border rounded border-secondary shadow-lg collapsed' data-bs-toggle='collapse' data-bs-target='#accordion-2 .item-" . $weekCounter . "' aria-expanded='true' aria-controls='accordion-2 .item-" . $weekCounter . "'><i class='fa fa-comments'></i>&nbsp;" . $week_name[$weekCounter] . "<br></button></h2>
                 <div class='accordion-collapse collapse item-" . $weekCounter . "' role='tabpanel' data-bs-parent='#accordion-2'>
 
                     <div class='accordion-body'>
-                        <p class='text-white'><strong>Assignment breif:</strong> " . $descriptions[$weekCounter] . "</p><label class='form-label text-white'>Mark: Not Marked</label><button id = " . $id . " class='btn btn-primary text-truncate bg-dark border rounded border-light shadow-none float-end tenant-continue-btn' data-bss-hover-animate='pulse' type='button' onclick = 'goToAssignment()'>Continue&nbsp;<i class='fas fa-greater-than continue-icon'></i></button>
+                        <p class='text-white'><strong>Assignment breif:</strong> " . $descriptions[$weekCounter] . "</p>
+                        
+                        <label class='form-label text-white'>Mark: ";
+
+                    if ($id == $completed_assignment_ids && $submitted == 'true') {
+                        if ($mark == "") {
+                            echo "Submitted (Not marked)";
+                        } else {
+                            echo $mark;
+                        }
+                    }elseif($id == $completed_assignment_ids && $submitted == 'false'){
+                        echo "Not submitted";
+                    }else{
+                        echo "Not submitted";
+                    }
+  
+
+
+                    echo "</label>
+
+                        <button id = " . $id . " class='btn btn-primary text-truncate bg-dark border rounded border-light shadow-none float-end tenant-continue-btn' data-bss-hover-animate='pulse' type='button' onclick = 'goToAssignment()'>Continue&nbsp;<i class='fas fa-greater-than continue-icon'></i></button>
                     </div>
 
                 </div>
@@ -95,7 +133,7 @@
                 function goToAssignment() {
                     var id = event.target.id;
                     window.location.href = "assignment work.php?id=" + id;
-                    
+
                 }
             </script>
         </div>
