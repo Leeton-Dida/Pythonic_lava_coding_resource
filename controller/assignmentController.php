@@ -1,16 +1,18 @@
 <?php
 session_start();
-
-$student_id = 1;
+$student_id = $_SESSION['user_id'];
 
 //get code from hidden input field in content.php
 $code = @$_GET['code'];
 $code = str_replace("'", "\'", $code);
 $assignment_id = @$_GET['assignment_id'];
 
+$date = date('d-m-y');
+
 include '../config/connection.php';
 //insert into student_assignment database and change submitted to true
-$sql = "INSERT INTO student_assignment (student_id, assignment_id, code, submitted) VALUES ('$student_id', '$assignment_id', '$code', 'true')";
+$sql = "INSERT INTO student_assignment (student_id, assignment_id, code, date, submitted) VALUES ($student_id, $assignment_id, '$code', '$date', 'true')";
+// $sql = "INSERT INTO student_assignment (student_id, assignment_id, code, submitted) VALUES ('$student_id', '$assignment_id', '$code', 'true')";
 $result = mysqli_query($conn, $sql);
 if ($result) {
     //javascript alert to tell user that code has been submitted

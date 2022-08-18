@@ -56,8 +56,8 @@ if (mysqli_num_rows($result) > 0) {
         $new_score = $current_score + $score;
     }
 }
-#update the user score in the database
-$sql = "UPDATE users SET score = '$new_score' WHERE email = '$user_email'";
+#update the user score and quized in the database
+$sql = "UPDATE users SET score = '$new_score', quized = 1 WHERE email = '$user_email'";
 $result = mysqli_query($conn, $sql);
 
 #check if score has been updated in the database using $result

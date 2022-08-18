@@ -1,3 +1,5 @@
+<?php  $selected_content_id = (string) @$_GET['content_id'] ?? '';?>
+
 <!DOCTYPE html>
 <html>
 
@@ -413,11 +415,32 @@
 
   </xml>
 
+  <?php
+  //suppress warnings
+  error_reporting(E_ALL ^ E_WARNING);
+
+  #get max_blocks from content table
+  $sql = "SELECT max_blocks FROM content WHERE id = $selected_content_id";
+  $result = mysqli_query($conn, $sql);
+  if(mysqli_num_rows($result) > 0) {
+    while($row = mysqli_fetch_assoc($result)) {
+      $max_blocks = $row['max_blocks'];
+    }
+  }else{
+    $max_blocks = 0;
+  }
+  
+  ?>
 
   <script>
     var demoWorkspace = Blockly.inject('blocklyDiv', {
       media: 'https://unpkg.com/blockly/media/',
-      maxBlocks: 10,
+      maxBlocks: <?php 
+      if($max_blocks == 0){
+        echo 'Infinity';
+      }else{
+        echo $max_blocks;
+      } ?>,
       toolbox: document.getElementById('toolbox'),
 
       grid: {

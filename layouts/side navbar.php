@@ -1,8 +1,9 @@
 <?php
 include './config/connection.php';
-$username = @$_SESSION['user_name'];
-$surname = @$_SESSION['user_surname'];
-$user_id = @$_SESSION['user_id'];
+$username = $_SESSION['user_name'];
+$surname = $_SESSION['user_surname'];
+$student_id = $_SESSION['user_id'];
+
 ?>
 
 
@@ -24,7 +25,7 @@ $user_id = @$_SESSION['user_id'];
 
                                 
                                 // $student_id = $_SESSION['id'] ?? 0;
-                                $student_id = 1; // for testing remove this line later on
+                                // $student_id = 1; // for testing remove this line later on
 
                                 #get all week names and ids from database and display them in the menu
                                 $sql = "SELECT * FROM weeks";
@@ -154,11 +155,8 @@ $user_id = @$_SESSION['user_id'];
                             <hr style="margin: 25px 0px 16px;margin-top: 31px;">
                         </div>
                     </li>
-                    <li class="nav-item"><a class="btn btn-primary text-truncate shadow float-end tenant-continue-btn" role="button" data-bss-hover-animate="pulse" style="margin-right: 45px;margin-top: 99px;background: rgba(51,51,51,0.2);width: 103px;" onclick = <?php logout();?> >Log out&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-logout continue-icon" style="transform: scale(1.09);">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
-                                <path d="M7 12h14l-3 -3m0 6l3 -3"></path>
-                            </svg></a></li>
+                   <li><a href="controller/logoutController.php"> <button type='button'  onclick="" class='btn btn-outline-light' style='color: rgb(255,255,255); background: #3B3B3B;margin-right: px;margin-top: 99px;margin-left: 50px'  data-bss-hover-animate="pulse">logout</button> </a></li>
+                    <!-- <li class="nav-item"><button class="btn btn-primary text-truncate shadow float-end tenant-continue-btn"  data-bss-hover-animate="pulse" style="margin-right: 45px;margin-top: 99px;background: rgba(51,51,51,0.2);width: 103px;" onclick =  >Log out</button></li> -->
                 </ul>
             </div>
         </nav>
@@ -177,19 +175,9 @@ $user_id = @$_SESSION['user_id'];
                 <li class="nav-item"><a class="nav-link" href="practice.php">Practice</a></li>
                 <li class="nav-item"><a class="nav-link" href="quiz.php">Quiz</a></li>
                 <li class="nav-item"><a class="nav-link" href="assignments.php">Assignments</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Ask teacher</a></li>
+                <li class="nav-item"><a class="nav-link" href="ask teacher.php">Ask teacher</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<?php
-#function to logout and destroy session and redirect to login page
-function logout()
-{
-    session_destroy();
-    header("Location: login.php");
-}
-
-// js function to logout and destroy session and redirect to login page
-?>
