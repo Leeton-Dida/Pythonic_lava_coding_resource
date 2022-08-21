@@ -16,6 +16,9 @@
             font-size: 14px;
         }
     </style>
+        <link rel="stylesheet" href="../assets/css/styles.css" />
+        <link rel="stylesheet" href="../assets/css/admin.css" />
+
 </head>
 <?php require_once('navbar.php'); ?>
 <body>

@@ -1,0 +1,20 @@
+table {
+    background-color: #0c0038;
+    color: white
+}
+
+h1, h2, h3, h4, h5, h6, p, a, li, td, th, label {
+    color: white
+}
+
+#text {
+    color: white
+}
+
+div {
+    color: white
+}
+
+.alert p{
+    color: rgb(0, 0, 0)
+}
