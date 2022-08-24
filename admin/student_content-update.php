@@ -131,7 +131,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
 
                         <div class="form-group">
-                                <label>student_id</label>
+                                <label>Student</label>
                                     <select class="form-control" id="student_id" name="student_id">
                                     <?php
                                         $sql = "SELECT *,id FROM users";
@@ -151,7 +151,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                                 <span class="form-text"><?php echo $student_id_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>content_id</label>
+                                <label>Content</label>
                                     <select class="form-control" id="content_id" name="content_id">
                                     <?php
                                         $sql = "SELECT *,id FROM content";
@@ -171,12 +171,12 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                                 <span class="form-text"><?php echo $content_id_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>code</label>
+                                <label>Code</label>
                                 <input type="text" name="code" maxlength="1000"class="form-control" value="<?php echo $code; ?>">
                                 <span class="form-text"><?php echo $code_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>mark</label>
+                                <label>Mark</label>
                                 <input type="number" name="mark" class="form-control" value="<?php echo $mark; ?>">
                                 <span class="form-text"><?php echo $mark_err; ?></span>
                             </div>

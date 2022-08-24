@@ -73,13 +73,13 @@ if(isset($_GET["id"]) && !empty($_GET["id"])){
                             <h4>date</h4>
                             <p class="form-control-static"><?php echo htmlspecialchars($row["date"]); ?></p>
                         </div><div class="form-group">
-                            <h4>user_id</h4>
+                            <h4>Student</h4>
                             <p class="form-control-static"><?php echo htmlspecialchars($row["user_id"]); ?></p>
                         </div><div class="form-group">
-                            <h4>message</h4>
+                            <h4>Message</h4>
                             <p class="form-control-static"><?php echo htmlspecialchars($row["message"]); ?></p>
                         </div><div class="form-group">
-                            <h4>reply</h4>
+                            <h4>Reply</h4>
                             <p class="form-control-static"><?php echo htmlspecialchars($row["reply"]); ?></p>
                         </div>
 

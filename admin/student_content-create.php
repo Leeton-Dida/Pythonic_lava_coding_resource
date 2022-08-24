@@ -71,11 +71,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
                         <div class="form-group">
-                                <label>student_id</label>
+                                <label>Student name</label>
                                     <select class="form-control" id="student_id" name="student_id">
                                     <?php
                                         $sql = "SELECT *,id FROM users";
                                         $result = mysqli_query($link, $sql);
+                                            //enter empty option if no assignment is selected
+                                            // echo '<option value="" "selected="selected">Select</option>';
                                         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                                             $duprow = $row;
                                             unset($duprow["id"]);
@@ -91,7 +93,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 <span class="form-text"><?php echo $student_id_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>content_id</label>
+                                <label>Content</label>
                                     <select class="form-control" id="content_id" name="content_id">
                                     <?php
                                         $sql = "SELECT *,id FROM content";
@@ -111,12 +113,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 <span class="form-text"><?php echo $content_id_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>code</label>
+                                <label>Code</label>
                                 <input type="text" name="code" maxlength="1000"class="form-control" value="<?php echo $code; ?>">
                                 <span class="form-text"><?php echo $code_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>mark</label>
+                                <label>Mark</label>
                                 <input type="number" name="mark" class="form-control" value="<?php echo $mark; ?>">
                                 <span class="form-text"><?php echo $mark_err; ?></span>
                             </div>

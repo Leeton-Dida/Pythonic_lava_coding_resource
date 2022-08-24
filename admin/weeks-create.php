@@ -65,11 +65,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
                         <div class="form-group">
-                                <label>assignment_id</label>
+                                <label>Assignment title</label>
                                     <select class="form-control" id="assignment_id" name="assignment_id">
                                     <?php
                                         $sql = "SELECT *,id FROM assignment";
                                         $result = mysqli_query($link, $sql);
+                                            //enter empty option if no assignment is selected
+                                            echo '<option value="" "selected="selected">Select</option>';
                                         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                                             $duprow = $row;
                                             unset($duprow["id"]);
@@ -85,7 +87,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 <span class="form-text"><?php echo $assignment_id_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>week_name</label>
+                                <label>Week</label>
                                 <input type="text" name="week_name" maxlength="25"class="form-control" value="<?php echo $week_name; ?>">
                                 <span class="form-text"><?php echo $week_name_err; ?></span>
                             </div>

@@ -70,16 +70,16 @@ if(isset($_GET["id"]) && !empty($_GET["id"])){
                     </div>
 
                      <div class="form-group">
-                            <h4>week_id</h4>
+                            <h4>Week</h4>
                             <p class="form-control-static"><?php echo htmlspecialchars($row["week_id"]); ?></p>
                         </div><div class="form-group">
-                            <h4>name</h4>
+                            <h4>Assignment title</h4>
                             <p class="form-control-static"><?php echo htmlspecialchars($row["name"]); ?></p>
                         </div><div class="form-group">
-                            <h4>description</h4>
+                            <h4>Description</h4>
                             <p class="form-control-static"><?php echo htmlspecialchars($row["description"]); ?></p>
                         </div><div class="form-group">
-                            <h4>due_date</h4>
+                            <h4>Due date</h4>
                             <p class="form-control-static"><?php echo htmlspecialchars($row["due_date"]); ?></p>
                         </div>
 

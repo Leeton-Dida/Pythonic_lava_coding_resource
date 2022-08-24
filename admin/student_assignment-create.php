@@ -77,11 +77,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
                         <div class="form-group">
-                                <label>student_id</label>
+                                <label>Student</label>
                                     <select class="form-control" id="student_id" name="student_id">
                                     <?php
                                         $sql = "SELECT *,id FROM users";
                                         $result = mysqli_query($link, $sql);
+                                            //enter empty option if no assignment is selected
+                                            echo '<option value="" "selected="selected">Select</option>';
                                         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                                             $duprow = $row;
                                             unset($duprow["id"]);
@@ -97,17 +99,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 <span class="form-text"><?php echo $student_id_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>assignment_id</label>
+                                <label>Assignment title </label>
                                     <select class="form-control" id="assignment_id" name="assignment_id">
                                     <?php
                                         $sql = "SELECT *,id FROM assignment";
                                         $result = mysqli_query($link, $sql);
+                                        //enter empty option if no assignment is selected
+                                        echo '<option value="" "selected="selected">Select</option>';
                                         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                                             $duprow = $row;
                                             unset($duprow["id"]);
                                             $value = implode(" | ", $duprow);
                                             if ($row["id"] == $assignment_id){
-                                            echo '<option value="' . "$row[id]" . '"selected="selected">' . "$value" . '</option>';
+                                            echo '<option value="' . "$row[id]" . '>' . "$value" . '</option>';
                                             } else {
                                                 echo '<option value="' . "$row[id]" . '">' . "$value" . '</option>';
                                         }
@@ -117,22 +121,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 <span class="form-text"><?php echo $assignment_id_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>code</label>
+                                <label>Code</label>
                                 <input type="text" name="code" maxlength="1000"class="form-control" value="<?php echo $code; ?>">
                                 <span class="form-text"><?php echo $code_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>submitted</label>
+                                <label>Submitted</label>
                                 <input type="text" name="submitted" maxlength="10"class="form-control" value="<?php echo $submitted; ?>">
                                 <span class="form-text"><?php echo $submitted_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>date</label>
+                                <label>Date</label>
                                 <input type="text" name="date" maxlength="25"class="form-control" value="<?php echo $date; ?>">
                                 <span class="form-text"><?php echo $date_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>mark</label>
+                                <label>Mark</label>
                                 <input type="number" name="mark" class="form-control" value="<?php echo $mark; ?>">
                                 <span class="form-text"><?php echo $mark_err; ?></span>
                             </div>

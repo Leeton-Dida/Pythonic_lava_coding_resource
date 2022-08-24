@@ -100,12 +100,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 <span class="form-text"><?php echo $Password_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>score</label>
+                                <label>Rank</label>
                                 <input type="number" name="score" class="form-control" value="<?php echo $score; ?>">
                                 <span class="form-text"><?php echo $score_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>quized</label>
+                                <label>Quized</label>
                                 <input type="number" name="quized" class="form-control" value="<?php echo $quized; ?>">
                                 <span class="form-text"><?php echo $quized_err; ?></span>
                             </div>

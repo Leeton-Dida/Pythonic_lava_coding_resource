@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="../assets/css/styles.css" />
-        <link rel="stylesheet" href="../assets/css/admin.css" />
+
     <meta charset="UTF-8">
     <title>Pythonic lava (admin)</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -18,6 +17,8 @@
             font-size: 14px;
         }
     </style>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+        <link rel="stylesheet" href="../assets/css/admin.css" />
 </head>
 <?php require_once('navbar.php'); ?>
 <body>
@@ -124,8 +125,8 @@
 										echo "<th><a href=?search=$search&sort=&order=Surname&sort=$sort>Surname</th>";
 										echo "<th><a href=?search=$search&sort=&order=Email&sort=$sort>Email</th>";
 										echo "<th><a href=?search=$search&sort=&order=Password&sort=$sort>Password</th>";
-										echo "<th><a href=?search=$search&sort=&order=score&sort=$sort>score</th>";
-										echo "<th><a href=?search=$search&sort=&order=quized&sort=$sort>quized</th>";
+										echo "<th><a href=?search=$search&sort=&order=score&sort=$sort>Rank</th>";
+										echo "<th><a href=?search=$search&sort=&order=quized&sort=$sort>Quized</th>";
 										echo "<th><a href=?search=$search&sort=&order=is_admin&sort=$sort>is_admin</th>";
 										
                                         echo "<th>Action</th>";

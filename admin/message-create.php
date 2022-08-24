@@ -71,16 +71,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
                         <div class="form-group">
-                                <label>date</label>
+                                <label>Date</label>
                                 <input type="text" name="date" maxlength="25"class="form-control" value="<?php echo $date; ?>">
                                 <span class="form-text"><?php echo $date_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>user_id</label>
+                                <label>Student</label>
                                     <select class="form-control" id="user_id" name="user_id">
                                     <?php
                                         $sql = "SELECT *,id FROM users";
                                         $result = mysqli_query($link, $sql);
+                                            //enter empty option if no assignment is selected
+                                            // echo '<option value="" "selected="selected">Select</option>';
                                         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                                             $duprow = $row;
                                             unset($duprow["id"]);
@@ -96,12 +98,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 <span class="form-text"><?php echo $user_id_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>message</label>
+                                <label>Message</label>
                                 <input type="text" name="message" maxlength="500"class="form-control" value="<?php echo $message; ?>">
                                 <span class="form-text"><?php echo $message_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>reply</label>
+                                <label>Reply</label>
                                 <input type="text" name="reply" maxlength="500"class="form-control" value="<?php echo $reply; ?>">
                                 <span class="form-text"><?php echo $reply_err; ?></span>
                             </div>

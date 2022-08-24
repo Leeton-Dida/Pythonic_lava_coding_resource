@@ -131,12 +131,12 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
 
                         <div class="form-group">
-                                <label>date</label>
+                                <label>Date</label>
                                 <input type="text" name="date" maxlength="25"class="form-control" value="<?php echo $date; ?>">
                                 <span class="form-text"><?php echo $date_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>user_id</label>
+                                <label>Student</label>
                                     <select class="form-control" id="user_id" name="user_id">
                                     <?php
                                         $sql = "SELECT *,id FROM users";
@@ -156,12 +156,12 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                                 <span class="form-text"><?php echo $user_id_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>message</label>
+                                <label>Message</label>
                                 <input type="text" name="message" maxlength="500"class="form-control" value="<?php echo $message; ?>">
                                 <span class="form-text"><?php echo $message_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>reply</label>
+                                <label>Reply</label>
                                 <input type="text" name="reply" maxlength="500"class="form-control" value="<?php echo $reply; ?>">
                                 <span class="form-text"><?php echo $reply_err; ?></span>
                             </div>

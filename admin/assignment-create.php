@@ -71,11 +71,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
                         <div class="form-group">
-                                <label>week_id</label>
+                                <label>Week</label>
                                     <select class="form-control" id="week_id" name="week_id">
                                     <?php
                                         $sql = "SELECT *,id FROM weeks";
                                         $result = mysqli_query($link, $sql);
+                                            //enter empty option if no assignment is selected
+                                            echo '<option value="" "selected="selected">Select</option>';
                                         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                                             $duprow = $row;
                                             unset($duprow["id"]);
@@ -91,17 +93,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 <span class="form-text"><?php echo $week_id_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>name</label>
+                                <label>Assignment title</label>
                                 <input type="text" name="name" maxlength="200"class="form-control" value="<?php echo $name; ?>">
                                 <span class="form-text"><?php echo $name_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>description</label>
+                                <label>Description</label>
                                 <input type="text" name="description" maxlength="250"class="form-control" value="<?php echo $description; ?>">
                                 <span class="form-text"><?php echo $description_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>due_date</label>
+                                <label>Due date</label>
                                 <input type="text" name="due_date" maxlength="25"class="form-control" value="<?php echo $due_date; ?>">
                                 <span class="form-text"><?php echo $due_date_err; ?></span>
                             </div>

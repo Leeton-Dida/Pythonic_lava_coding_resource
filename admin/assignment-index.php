@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="../assets/css/styles.css" />
-        <link rel="stylesheet" href="../assets/css/admin.css" />
+
     <meta charset="UTF-8">
     <title>Pythonic lava (admin)</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -18,6 +17,9 @@
             font-size: 14px;
         }
     </style>
+
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+        <link rel="stylesheet" href="../assets/css/admin.css" />
 </head>
 <?php require_once('navbar.php'); ?>
 <body>
@@ -120,18 +122,26 @@
                             echo "<table class='table table-bordered table-striped'>";
                                 echo "<thead>";
                                     echo "<tr>";
-                                        echo "<th><a href=?search=$search&sort=&order=week_id&sort=$sort>week_id</th>";
-										echo "<th><a href=?search=$search&sort=&order=name&sort=$sort>name</th>";
-										echo "<th><a href=?search=$search&sort=&order=description&sort=$sort>description</th>";
-										echo "<th><a href=?search=$search&sort=&order=due_date&sort=$sort>due_date</th>";
+                                        echo "<th><a href=?search=$search&sort=&order=week_id&sort=$sort>Week</th>";
+										echo "<th><a href=?search=$search&sort=&order=name&sort=$sort>Assignment title</th>";
+										echo "<th><a href=?search=$search&sort=&order=description&sort=$sort>Description</th>";
+										echo "<th><a href=?search=$search&sort=&order=due_date&sort=$sort>Due date</th>";
 										
                                         echo "<th>Action</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
+
+                                //get week Name from weeks table where id = week_id in admin table
+                                $week_id = $row['week_id'];
+                                $sql = "SELECT * FROM weeks WHERE id = $week_id";
+                                $result_week = mysqli_query($link, $sql);
+                                $row_week = mysqli_fetch_array($result_week);
+                                $week_name = $row_week['week_name'];
+
                                     echo "<tr>";
-                                    echo "<td>" . htmlspecialchars($row['week_id']) . "</td>";echo "<td>" . htmlspecialchars($row['name']) . "</td>";echo "<td>" . htmlspecialchars($row['description']) . "</td>";echo "<td>" . htmlspecialchars($row['due_date']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($week_name) . "</td>";echo "<td>" . htmlspecialchars($row['name']) . "</td>";echo "<td>" . htmlspecialchars($row['description']) . "</td>";echo "<td>" . htmlspecialchars($row['due_date']) . "</td>";
                                         echo "<td>";
                                             echo "<a href='assignment-read.php?id=". $row['id'] ."' title='View Record' data-toggle='tooltip'><i class='far fa-eye'></i></a>";
                                             echo "<a href='assignment-update.php?id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><i class='far fa-edit'></i></a>";

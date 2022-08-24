@@ -17,6 +17,10 @@
         table tr td:last-child a {
             margin-right: 5px;
         }
+
+        body {
+            background: url(&quot;assets/img/PngItem_156978.png&quot;)
+        }
     </style>
     <link rel="stylesheet" href="../assets/css/styles.css" />
 </head>

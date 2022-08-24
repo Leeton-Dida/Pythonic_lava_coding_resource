@@ -123,7 +123,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
 
                         <div class="form-group">
-                                <label>assignment_id</label>
+                                <label>Assignment</label>
                                     <select class="form-control" id="assignment_id" name="assignment_id">
                                     <?php
                                         $sql = "SELECT *,id FROM assignment";
@@ -143,7 +143,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                                 <span class="form-text"><?php echo $assignment_id_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>week_name</label>
+                                <label>Week</label>
                                 <input type="text" name="week_name" maxlength="25"class="form-control" value="<?php echo $week_name; ?>">
                                 <span class="form-text"><?php echo $week_name_err; ?></span>
                             </div>

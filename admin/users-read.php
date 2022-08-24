@@ -82,10 +82,10 @@ if(isset($_GET["id"]) && !empty($_GET["id"])){
                             <h4>Password</h4>
                             <p class="form-control-static"><?php echo htmlspecialchars($row["Password"]); ?></p>
                         </div><div class="form-group">
-                            <h4>score</h4>
+                            <h4>Rank</h4>
                             <p class="form-control-static"><?php echo htmlspecialchars($row["score"]); ?></p>
                         </div><div class="form-group">
-                            <h4>quized</h4>
+                            <h4>Quized</h4>
                             <p class="form-control-static"><?php echo htmlspecialchars($row["quized"]); ?></p>
                         </div><div class="form-group">
                             <h4>is_admin</h4>

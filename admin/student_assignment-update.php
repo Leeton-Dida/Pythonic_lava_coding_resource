@@ -139,7 +139,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
 
                         <div class="form-group">
-                                <label>student_id</label>
+                                <label>Student</label>
                                     <select class="form-control" id="student_id" name="student_id">
                                     <?php
                                         $sql = "SELECT *,id FROM users";
@@ -159,7 +159,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                                 <span class="form-text"><?php echo $student_id_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>assignment_id</label>
+                                <label>Assignment</label>
                                     <select class="form-control" id="assignment_id" name="assignment_id">
                                     <?php
                                         $sql = "SELECT *,id FROM assignment";
@@ -179,22 +179,22 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                                 <span class="form-text"><?php echo $assignment_id_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>code</label>
+                                <label>Code</label>
                                 <input type="text" name="code" maxlength="1000"class="form-control" value="<?php echo $code; ?>">
                                 <span class="form-text"><?php echo $code_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>submitted</label>
+                                <label>Submitted</label>
                                 <input type="text" name="submitted" maxlength="10"class="form-control" value="<?php echo $submitted; ?>">
                                 <span class="form-text"><?php echo $submitted_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>date</label>
+                                <label>Date</label>
                                 <input type="text" name="date" maxlength="25"class="form-control" value="<?php echo $date; ?>">
                                 <span class="form-text"><?php echo $date_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>mark</label>
+                                <label>Mark</label>
                                 <input type="number" name="mark" class="form-control" value="<?php echo $mark; ?>">
                                 <span class="form-text"><?php echo $mark_err; ?></span>
                             </div>

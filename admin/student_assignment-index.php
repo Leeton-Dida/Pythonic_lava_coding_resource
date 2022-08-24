@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="../assets/css/styles.css" />
-        <link rel="stylesheet" href="../assets/css/admin.css" />
+
     <meta charset="UTF-8">
     <title>Pythonic lava (admin)</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -18,6 +17,8 @@
             font-size: 14px;
         }
     </style>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+        <link rel="stylesheet" href="../assets/css/admin.css" />
 </head>
 <?php require_once('navbar.php'); ?>
 <body>
@@ -120,20 +121,35 @@
                             echo "<table class='table table-bordered table-striped'>";
                                 echo "<thead>";
                                     echo "<tr>";
-                                        echo "<th><a href=?search=$search&sort=&order=student_id&sort=$sort>student_id</th>";
-										echo "<th><a href=?search=$search&sort=&order=assignment_id&sort=$sort>assignment_id</th>";
+                                        echo "<th><a href=?search=$search&sort=&order=student_id&sort=$sort>Name</th>";
+										echo "<th><a href=?search=$search&sort=&order=assignment_id&sort=$sort>Assignment title</th>";
 										echo "<th><a href=?search=$search&sort=&order=code&sort=$sort>code</th>";
-										echo "<th><a href=?search=$search&sort=&order=submitted&sort=$sort>submitted</th>";
-										echo "<th><a href=?search=$search&sort=&order=date&sort=$sort>date</th>";
-										echo "<th><a href=?search=$search&sort=&order=mark&sort=$sort>mark</th>";
+										echo "<th><a href=?search=$search&sort=&order=submitted&sort=$sort>Submitted</th>";
+										echo "<th><a href=?search=$search&sort=&order=date&sort=$sort>Date</th>";
+										echo "<th><a href=?search=$search&sort=&order=mark&sort=$sort>Mark</th>";
 										
                                         echo "<th>Action</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
+
+                                //get user Name from users table where id = user_id in admin table
+                                $user_id = $row['student_id'];
+                                $sql = "SELECT * FROM users WHERE id = $user_id";
+                                $result_user = mysqli_query($link, $sql);
+                                $row_user = mysqli_fetch_array($result_user);
+                                $user_name = $row_user['Name'];
+
+                                //get assignment Name from assignments table where id = assignment_id in admin table
+                                $assignment_id = $row['assignment_id'];
+                                $sql = "SELECT * FROM assignment WHERE id = $assignment_id";
+                                $result_assignment = mysqli_query($link, $sql);
+                                $row_assignment = mysqli_fetch_array($result_assignment);
+                                $assignment_name = $row_assignment['name'];
+
                                     echo "<tr>";
-                                    echo "<td>" . htmlspecialchars($row['student_id']) . "</td>";echo "<td>" . htmlspecialchars($row['assignment_id']) . "</td>";echo "<td>" . htmlspecialchars($row['code']) . "</td>";echo "<td>" . htmlspecialchars($row['submitted']) . "</td>";echo "<td>" . htmlspecialchars($row['date']) . "</td>";echo "<td>" . htmlspecialchars($row['mark']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($user_name) . "</td>";echo "<td>" . htmlspecialchars($assignment_name) . "</td>";echo "<td>" . htmlspecialchars($row['code']) . "</td>";echo "<td>" . htmlspecialchars($row['submitted']) . "</td>";echo "<td>" . htmlspecialchars($row['date']) . "</td>";echo "<td>" . htmlspecialchars($row['mark']) . "</td>";
                                         echo "<td>";
                                             echo "<a href='student_assignment-read.php?id=". $row['id'] ."' title='View Record' data-toggle='tooltip'><i class='far fa-eye'></i></a>";
                                             echo "<a href='student_assignment-update.php?id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><i class='far fa-edit'></i></a>";

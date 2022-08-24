@@ -71,11 +71,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
                         <div class="form-group">
-                                <label>week_id</label>
+                                <label>Week</label>
                                     <select class="form-control" id="week_id" name="week_id">
                                     <?php
                                         $sql = "SELECT *,id FROM weeks";
                                         $result = mysqli_query($link, $sql);
+                                            //enter empty option if no assignment is selected
+                                            // echo '<option value="" "selected="selected">Select</option>';
                                         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                                             $duprow = $row;
                                             unset($duprow["id"]);
@@ -91,17 +93,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 <span class="form-text"><?php echo $week_id_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>task_description</label>
+                                <label>Task description</label>
                                 <input type="text" name="task_description" maxlength="300"class="form-control" value="<?php echo $task_description; ?>">
                                 <span class="form-text"><?php echo $task_description_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>lesson_title</label>
+                                <label>Lesson title</label>
                                 <input type="text" name="lesson_title" maxlength="50"class="form-control" value="<?php echo $lesson_title; ?>">
                                 <span class="form-text"><?php echo $lesson_title_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>max_blocks</label>
+                                <label>Maximum blocks</label>
                                 <input type="number" name="max_blocks" class="form-control" value="<?php echo $max_blocks; ?>">
                                 <span class="form-text"><?php echo $max_blocks_err; ?></span>
                             </div>

@@ -127,17 +127,17 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
 
                         <div class="form-group">
-                                <label>question</label>
+                                <label>Question</label>
                                 <input type="text" name="question" maxlength="60"class="form-control" value="<?php echo $question; ?>">
                                 <span class="form-text"><?php echo $question_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>answer</label>
+                                <label>Answer</label>
                                 <input type="text" name="answer" maxlength="200"class="form-control" value="<?php echo $answer; ?>">
                                 <span class="form-text"><?php echo $answer_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>correctAnswer</label>
+                                <label>CorrectAnswer</label>
                                 <input type="text" name="correctAnswer" maxlength="4"class="form-control" value="<?php echo $correctAnswer; ?>">
                                 <span class="form-text"><?php echo $correctAnswer_err; ?></span>
                             </div>

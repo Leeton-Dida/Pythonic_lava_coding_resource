@@ -131,7 +131,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
 
                         <div class="form-group">
-                                <label>week_id</label>
+                                <label>Week</label>
                                     <select class="form-control" id="week_id" name="week_id">
                                     <?php
                                         $sql = "SELECT *,id FROM weeks";
@@ -151,17 +151,17 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                                 <span class="form-text"><?php echo $week_id_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>name</label>
+                                <label>Assignment title</label>
                                 <input type="text" name="name" maxlength="200"class="form-control" value="<?php echo $name; ?>">
                                 <span class="form-text"><?php echo $name_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>description</label>
+                                <label>Description</label>
                                 <input type="text" name="description" maxlength="250"class="form-control" value="<?php echo $description; ?>">
                                 <span class="form-text"><?php echo $description_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>due_date</label>
+                                <label>Due date</label>
                                 <input type="text" name="due_date" maxlength="25"class="form-control" value="<?php echo $due_date; ?>">
                                 <span class="form-text"><?php echo $due_date_err; ?></span>
                             </div>

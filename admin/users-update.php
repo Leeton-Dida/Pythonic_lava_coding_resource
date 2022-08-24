@@ -163,7 +163,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                                 <span class="form-text"><?php echo $Password_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>score</label>
+                                <label>Rank</label>
                                 <input type="number" name="score" class="form-control" value="<?php echo $score; ?>">
                                 <span class="form-text"><?php echo $score_err; ?></span>
                             </div>
