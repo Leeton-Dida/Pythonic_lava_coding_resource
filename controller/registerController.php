@@ -31,15 +31,19 @@ if (mysqli_num_rows($result) > 0){
             if ($rdoAdmin == "admin") {
                 $sql = "INSERT INTO admin (user_id) VALUES ((SELECT id FROM users WHERE Email = '$txtEmail'))";
                 if (mysqli_query($conn, $sql)) {
-                    //set is_admin to 1 in the users table
-                    $sql = "UPDATE users SET is_admin = 1 WHERE Email = '$txtEmail'";
-                    if (mysqli_query($conn, $sql)) {
-                        echo "<script type='text/javascript'>alert('Account created successfully.');</script>";
+
+                    // //set is_admin to 1 in the users table
+                    // $sql = "UPDATE users SET is_admin = 1 WHERE Email = '$txtEmail'";
+                    // if (mysqli_query($conn, $sql)) {
+                    //     echo "<script type='text/javascript'>alert('Account created successfully.');</script>";
+                    //     echo "<script>window.location.href='../login.php'</script>";
+                    //     // header("Location: ../Login.php");
+                    // } else {
+                    //     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                    // }
+
+                    echo "<script type='text/javascript'>alert('Account created successfully.');</script>";
                         echo "<script>window.location.href='../login.php'</script>";
-                        // header("Location: ../Login.php");
-                    } else {
-                        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                    }
                 }else{
                     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                 }
@@ -58,7 +62,7 @@ if (mysqli_num_rows($result) > 0){
     } else {
         #if the passwords do not match, redirect to the register page
         echo "<script type='text/javascript'>alert('Passwords do not match!');</script>";
-        header("refresh:0;url=../Register.html");
+        header("refresh:0;url=../register.php");
     }
    
 }

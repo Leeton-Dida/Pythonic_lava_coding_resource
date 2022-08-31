@@ -17,8 +17,15 @@ body {
   max-width: 500px;
 }
 
+.card-body {
+}
+
+@media (min-width:992px) {
+  .row-cols-lg-3 > * {
+  }
+}
+
 #accordion-1 {
   background: #0c0038;
 }
-
 

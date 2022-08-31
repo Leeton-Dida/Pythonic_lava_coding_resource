@@ -29,7 +29,7 @@ if (!isset($_SESSION['user'])) {
           <a class="dropdown-item" href="quiz-index.php">Quiz</a>
           <a class="dropdown-item" href="student_assignment-index.php">Student assignments</a>
           <a class="dropdown-item" href="student_content-index.php"> Student content</a>
-          <a class="dropdown-item" href="users-index.php">Students</a>
+          <a class="dropdown-item" href="users-index.php">Users</a>
           <a class="dropdown-item" href="weeks-index.php">Weeks</a>
           <!-- TABLE_BUTTONS -->
         </div>

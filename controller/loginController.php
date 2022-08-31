@@ -64,7 +64,7 @@ if ($rdoAdmin == 'admin') {
         } else {
             // if the password is incorrect, reload the login page
             echo "<script type='text/javascript'>alert('Incorrect Email or password');</script>";
-            header("refresh:0;url=../login.html");
+            header("refresh:0;url=../login.php");
         }
     } else {
         // redirect to the Register page

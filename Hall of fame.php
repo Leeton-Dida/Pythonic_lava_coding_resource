@@ -198,7 +198,7 @@ if(!isset($_SESSION['user_id']))
                         <th scope='col'>Pos</th>
                         <th scope='col'>Name</th>
                         <th scope='col'>Surname</th>
-                        <th scope='col'>Score</th>
+                        <th scope='col'>Rank</th>
                     </tr>
                     </thead><tbody>";
                     $i = 1;

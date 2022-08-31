@@ -125,9 +125,12 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         <div class="form-group">
                                 <label>Assignment</label>
                                     <select class="form-control" id="assignment_id" name="assignment_id">
+                                        <!-- empty select option -->
                                     <?php
                                         $sql = "SELECT *,id FROM assignment";
                                         $result = mysqli_query($link, $sql);
+                                          //enter empty option if no assignment is selected
+                                          echo '<option value=" " "selected="selected">Select</option>';
                                         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                                             $duprow = $row;
                                             unset($duprow["id"]);

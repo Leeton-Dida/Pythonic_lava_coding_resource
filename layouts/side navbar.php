@@ -4,15 +4,31 @@ $username = $_SESSION['user_name'];
 $surname = $_SESSION['user_surname'];
 $student_id = $_SESSION['user_id'];
 
+//get profile_image from database
+$query = "SELECT profile_image FROM users WHERE id = '{$student_id}'";
+$result = mysqli_query($conn, $query);
+$profile_image = mysqli_fetch_assoc($result);
+$profile_image = $profile_image['profile_image'];
+
 ?>
 
 
-
 <div><a class="btn btn-primary btn-customized open-menu" role="button" style="margin-top: 2px;padding-top: 9px;padding-bottom: 10px;margin-right: 1687px;"><i class="fa fa-navicon"></i>&nbsp;Menu</a>
-    <div class="sidebar" style="background: rgb(33,37,41);"><img class="rounded" loading="lazy" src="assets/img/bs4_team_01.jpg" style="text-align: center;border-style: none;transform: scale(0.97);max-height: 100px;max-width: 100px;margin-left: 20px;margin-top: 19px;">
+    <div class="sidebar" style="background: rgb(33,37,41);">
+        <a href="controller/profileController.php">
+            <img class="rounded-circle" loading="lazy" src="
+            <?php if($profile_image == NULL){
+                echo "./assets/img/bs4_team_01.jpg";
+            } else {
+                echo $profile_image;
+            }
+             
+            ?>
+            " style="text-align: center;border-style: none;transform: scale(0.97);max-height: 100px;max-width: 100px;margin-left: 20px;margin-top: 19px;">
+        </a>
         <div class="dismiss"><i class="fa fa-caret-left"></i></div>
         <div class="brand" style="padding: 15px 20px;">
-            <h5 class="text-start"><?php echo $username .' '. $surname[0]?></h5>
+            <h5 class="text-start"><?php echo $username . ' ' . $surname[0] ?></h5>
         </div>
         <nav class="navbar navbar-dark navbar-expand">
             <div class="container-fluid">
@@ -23,7 +39,7 @@ $student_id = $_SESSION['user_id'];
                             <div class="accordion-item">
                                 <?php
 
-                                
+
                                 // $student_id = $_SESSION['id'] ?? 0;
                                 // $student_id = 1; // for testing remove this line later on
 
@@ -104,15 +120,15 @@ $student_id = $_SESSION['user_id'];
                                                 <button id = '$contentId' onclick = 'submitForm()' type='button'  class='btn btn-outline-light' for='formCheck-1' style='color: rgb(255,255,255); background: #3B3B3B'>" . $title . ': ' . $contentId . "</button>
                                                 
                                                 <label id = 'status' style='margin-left : 10px'> ";
-                                                
-                                                if (in_array($contentId, $student_content_id)) {
-                                                    echo "Completed";
-                                                } else {
-                                                    echo "Not completed";
-                                                }
-                                                
-                                                
-                                                echo "</label>
+
+                                        if (in_array($contentId, $student_content_id)) {
+                                            echo "Completed";
+                                        } else {
+                                            echo "Not completed";
+                                        }
+
+
+                                        echo "</label>
 
                                             </div>";
                                         $content_id_counter++;
@@ -155,7 +171,7 @@ $student_id = $_SESSION['user_id'];
                             <hr style="margin: 25px 0px 16px;margin-top: 31px;">
                         </div>
                     </li>
-                   <li><a href="controller/logoutController.php"> <button type='button'  onclick="" class='btn btn-outline-light' style='color: rgb(255,255,255); background: #3B3B3B;margin-right: px;margin-top: 99px;margin-left: 50px'  data-bss-hover-animate="pulse">logout</button> </a></li>
+                    <li><a href="controller/logoutController.php"> <button type='button' onclick="" class='btn btn-outline-light' style='color: rgb(255,255,255); background: #3B3B3B;margin-right: px;margin-top: 99px;margin-left: 50px' data-bss-hover-animate="pulse">logout</button> </a></li>
                     <!-- <li class="nav-item"><button class="btn btn-primary text-truncate shadow float-end tenant-continue-btn"  data-bss-hover-animate="pulse" style="margin-right: 45px;margin-top: 99px;background: rgba(51,51,51,0.2);width: 103px;" onclick =  >Log out</button></li> -->
                 </ul>
             </div>
@@ -180,4 +196,3 @@ $student_id = $_SESSION['user_id'];
         </div>
     </div>
 </nav>
-

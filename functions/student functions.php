@@ -7,6 +7,7 @@ $code = @$_GET['code'];
 $code = str_replace("'", "\'", $code);
 $content_id = @$_GET['content_id'] ;
 
+
 include '../config/connection.php';
 
 #send student_id and content_id and code to student_content database

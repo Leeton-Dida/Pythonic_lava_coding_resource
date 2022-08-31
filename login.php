@@ -63,6 +63,7 @@
       </button>
     </form>
     <a href="register.php" style="margin-left: 105px">Register</a>
+    <a style = "margin-left: 67px" href="forgot password.php" style="margin-left: 105px">Forgot password?</a>
   </div>
 
   </div>

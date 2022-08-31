@@ -1,5 +1,4 @@
 
-
 if (window.innerWidth < 768) {
 	[].slice.call(document.querySelectorAll('[data-bss-disabled-mobile]')).forEach(function (elem) {
 		elem.classList.remove('animated');
