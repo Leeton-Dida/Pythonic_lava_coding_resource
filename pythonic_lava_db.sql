@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 18, 2022 at 07:22 AM
+-- Generation Time: Sep 01, 2022 at 02:37 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.1.32
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `role` varchar(200) NOT NULL
+  `role` varchar(200) NOT NULL DEFAULT 'sub admin'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -39,7 +39,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `user_id`, `role`) VALUES
-(1, 1, 'Super admin');
+(1, 1, 'Super super admin'),
+(28, 2, 'sub admin');
 
 -- --------------------------------------------------------
 
@@ -62,7 +63,7 @@ CREATE TABLE `assignment` (
 INSERT INTO `assignment` (`id`, `week_id`, `name`, `description`, `due_date`) VALUES
 (1, 3, 'Parul University', 'akjgvruihgaoh lesahg oisgbh ilu h slh oihsg b liufg aqi u io whfo ouhw ho iouwh las giu', '5/4/22'),
 (2, 4, 'ST Anthony`s High school', 'Course work team leader', '5/7/22'),
-(3, 5, 'Gokomere High school', 'Course work team leader', '7/9/22');
+(3, 5, 'Dancing', 'Breaking', '7/9/22');
 
 -- --------------------------------------------------------
 
@@ -119,7 +120,8 @@ INSERT INTO `message` (`id`, `date`, `user_id`, `message`, `reply`) VALUES
 (7, '', 4, 'aberbweds', 'go sleep'),
 (8, '', 4, 'what did you say? 2022-08-18', ''),
 (9, '', 4, 'what do i need? (18-08-22)', 'go die'),
-(10, '(18-08-22)', 2, 'Do you like me?', '');
+(10, '(18-08-22)', 2, 'Do you like me?', ''),
+(11, '21-08-22', 1, 'Why am i alone in this class', '');
 
 -- --------------------------------------------------------
 
@@ -186,7 +188,8 @@ CREATE TABLE `student_content` (
 --
 
 INSERT INTO `student_content` (`id`, `student_id`, `content_id`, `code`, `mark`) VALUES
-(1, 1, 2, 'if 6 * 7 == 42:  print(\"Don\'t panic\")else:  print(\'Panic\')', NULL);
+(1, 1, 2, 'if 6 * 7 == 42:  print(\"Don\'t panic\")else:  print(\'Panic\')', NULL),
+(3, 1, 6, 'if 6 * 7 == 42:  print(\"Don\'t panic\")else:  print(\'Panic\')', NULL);
 
 -- --------------------------------------------------------
 
@@ -202,17 +205,20 @@ CREATE TABLE `users` (
   `Password` varchar(30) NOT NULL,
   `score` int(11) NOT NULL DEFAULT 0,
   `quized` tinyint(1) NOT NULL,
-  `is_admin` tinyint(1) NOT NULL
+  `is_admin` tinyint(1) NOT NULL DEFAULT 0,
+  `profile_image` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `Name`, `Surname`, `Email`, `Password`, `score`, `quized`, `is_admin`) VALUES
-(1, 'Leeton', 'Dida', 'lee@gmail.com', '123', 18, 1, 1),
-(2, 'Clayton', 'Dida', 'clay@gmail.com', '123', 5, 0, 0),
-(4, 'Lexx', 'Dee', 'lex@gmail.com', '123', 20, 1, 0);
+INSERT INTO `users` (`id`, `Name`, `Surname`, `Email`, `Password`, `score`, `quized`, `is_admin`, `profile_image`) VALUES
+(1, 'Leeton', 'Dida', 'lee@gmail.com', '123', 18, 0, 1, './assets/uploads/630ec246a94f01.72708853.jpg'),
+(2, 'Clayton', 'Dida', 'clay@gmail.com', '123', 5, 0, 1, ''),
+(4, 'Lexx', 'Dee', 'lex@gmail.com', '123', 20, 1, 0, ''),
+(6, 'Paul', 'Mbamalu', 'centpaul25@gmail.com', 'Admin5', 1, 1, 1, ''),
+(7, 'jackie', 'chan', 'jackie@gmail.com', '123', 0, 0, 1, '');
 
 -- --------------------------------------------------------
 
@@ -231,9 +237,9 @@ CREATE TABLE `weeks` (
 --
 
 INSERT INTO `weeks` (`id`, `assignment_id`, `week_name`) VALUES
-(3, NULL, 'Week 1'),
+(3, 1, 'Week 1'),
 (4, NULL, 'Week 2'),
-(5, NULL, 'Week 3'),
+(5, 3, 'Week 3'),
 (28, 2, 'Week 4');
 
 --
@@ -245,7 +251,7 @@ INSERT INTO `weeks` (`id`, `assignment_id`, `week_name`) VALUES
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `admin_ibfk_1` (`user_id`);
 
 --
 -- Indexes for table `assignment`
@@ -311,7 +317,7 @@ ALTER TABLE `weeks`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `assignment`
@@ -329,7 +335,7 @@ ALTER TABLE `content`
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `quiz`
@@ -347,19 +353,19 @@ ALTER TABLE `student_assignment`
 -- AUTO_INCREMENT for table `student_content`
 --
 ALTER TABLE `student_content`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `weeks`
 --
 ALTER TABLE `weeks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- Constraints for dumped tables
@@ -369,7 +375,7 @@ ALTER TABLE `weeks`
 -- Constraints for table `admin`
 --
 ALTER TABLE `admin`
-  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `assignment`
@@ -381,7 +387,7 @@ ALTER TABLE `assignment`
 -- Constraints for table `content`
 --
 ALTER TABLE `content`
-  ADD CONSTRAINT `content_ibfk_1` FOREIGN KEY (`week_id`) REFERENCES `weeks` (`id`);
+  ADD CONSTRAINT `content_ibfk_1` FOREIGN KEY (`week_id`) REFERENCES `weeks` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `message`

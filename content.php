@@ -54,8 +54,8 @@ $selected_content_id = (string) @$_GET['content_id'] ?? '';
                                                                                                                                                         echo "Course work";
                                                                                                                                                     }; ?></h1>
 
-    <div class="container text-center">
-        <h2 class="display-5 text-center" style="text-align: center;color: rgb(255,255,255);margin-bottom: 42px;margin-top: 78px;">Tasks</h2>
+    <div class="container text-left" style="color: white;">
+        <h2 class="display-5 text-left" style="text-align: left;color: rgb(255,255,255);margin-bottom: 42px;margin-top: 78px;">Tasks</h2>
         <p id="taskDescription" class="text-white" style="margin-bottom: 20px"><?php if ($lesson_description != null) {
                                                                                     echo $lesson_description;
                                                                                 } else {

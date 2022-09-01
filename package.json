@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@ckeditor/ckeditor5-font": "^35.1.0",
     "blockly": "^5.20210325.1"
   }
 }

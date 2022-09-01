@@ -208,4 +208,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         </div>
     </section>
 </body>
+<footer>
+    <?php require_once('../layouts/adminFooter.php'); ?>
+    </footer>
 </html>

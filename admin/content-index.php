@@ -192,4 +192,7 @@
         });
     </script>
 </body>
+<footer>
+    <?php require_once('../layouts/adminFooter.php'); ?>
+    </footer>
 </html>

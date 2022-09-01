@@ -114,6 +114,9 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 <head>
 <link rel="stylesheet" href="../assets/css/styles.css" />
         <link rel="stylesheet" href="../assets/css/admin.css" />
+
+        <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
     <meta charset="UTF-8">
     <title>Update Record</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -175,4 +178,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         </div>
     </section>
 </body>
+<footer>
+    <?php require_once('../layouts/adminFooter.php'); ?>
+    </footer>
 </html>

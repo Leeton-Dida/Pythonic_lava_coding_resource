@@ -102,15 +102,15 @@ if(!isset($_SESSION['user_id']))
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
                     <h2 style="text-align: center;color: rgb(255,255,255);margin-bottom: 42px;">Programming tips</h2>
-                    <p class="text-center text-white" style="padding-left: 150px;padding-right: 150px;margin-left: 150px;margin-right: 150px;padding-bottom: 47px;">Thwef mowv fweunvo ogvemv uwrfgo p mwegpu nfgo mo o neofg nref jeog kjsdgruj negfi ogwej uijngowemowfg.</p>
+                    <p class="text-center text-white" style="padding-left: 150px;padding-right: 150px;margin-left: 150px;margin-right: 150px;padding-bottom: 47px;">Ask for help. Getting stuck on one olace for a long period of timew does not help. Instead ask a friend for help and get the ball rolling.</p>
                 </div>
                 <div class="carousel-item">
                     <h2 style="text-align: center;color: rgb(255,255,255);margin-bottom: 42px;">Programming tips</h2>
-                    <p style="padding-left: 150px;padding-right: 150px;margin-left: 150px;margin-right: 150px;padding-bottom: 47px;"><br><span style="color: rgb(34, 34, 34); background-color: rgb(244, 244, 244);">Think you don’t need to go over the basics? Think again. Like in any field, getting a good grasp of the fundamentals is critically important to achieving long-term success.</span><br><br></p>
+                    <p style="padding-left: 150px;padding-right: 150px;margin-left: 150px;margin-right: 150px;padding-bottom: 47px;"><br><span style="color: white;">Think you don’t need to go over the basics? Think again. Like in any field, getting a good grasp of the fundamentals is critically important to achieving long-term success.</span><br><br></p>
                 </div>
                 <div class="carousel-item">
                     <h2 style="text-align: center;color: rgb(255,255,255);margin-bottom: 42px;">Programming tips</h2>
-                    <p style="padding-left: 150px;padding-right: 150px;margin-left: 150px;margin-right: 150px;padding-bottom: 47px;"><br><span style="color: rgb(34, 34, 34); background-color: rgb(244, 244, 244);">Think you don’t need to go over the basics? Think again. Like in any field, getting a good grasp of the fundamentals is critically important to achieving long-term success.</span><br><br></p>
+                    <p style="padding-left: 150px;padding-right: 150px;margin-left: 150px;margin-right: 150px;padding-bottom: 47px;"><br><span style="color: white;">Practice, practice, practice. Practice makes improvement. Put your knowledge into use and try new wways of solving problems. Explore with code and have fun while doing it.</span><br><br></p>
                 </div>
             </div>
             <div><a class="carousel-control-prev" role="button" href="#Div_Promo_Carousel" data-bs-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"> </span><span class="sr-only">Prev </span></a><a class="carousel-control-next" role="button" href="#Div_Promo_Carousel" data-bs-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"> </span><span class="sr-only">Next </span></a></div>

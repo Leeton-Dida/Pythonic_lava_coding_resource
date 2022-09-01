@@ -139,8 +139,6 @@ include 'layouts/side navbar.php';
     <!-- hidden element on bottom of page -->
     <div class="hidden" style="margin-bottom: 400px">
     </div>
-    <?php include './layouts/footer.php'; ?>
-
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
@@ -149,5 +147,7 @@ include 'layouts/side navbar.php';
     <script src="assets/js/Button-Modal-popup-team-member.js"></script>
     <script src="assets/js/Ultimate-Sidebar-Menu-BS5.js"></script>
 </body>
-
+<footer>
+<?php include './layouts/footer.php'; ?>
+</footer>
 </html>

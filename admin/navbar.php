@@ -1,10 +1,8 @@
 <?php
 session_start();
 if (!isset($_SESSION['user'])) {
-  header("location:login.php");
+  header("location: ../login.php");
 }
-
-
 ?>
 
 <!-- <nav class="navbar navbar-dark navbar-expand-md textwhite bg-dark text-white shadow-lg py-3" style="transform-style: preserve-3d;opacity: 0.83;filter: brightness(160%) saturate(200%);background: rgb(33, 37, 41);"> -->

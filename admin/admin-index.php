@@ -26,6 +26,7 @@
 <?php require_once('navbar.php'); ?>
 
 <body>
+    
     <section class="pt-5">
         <div class="container-fluid">
             <div class="row">
@@ -212,5 +213,7 @@
         });
     </script>
 </body>
-
+<footer>
+    <?php require_once('../layouts/adminFooter.php'); ?>
+    </footer>
 </html>
