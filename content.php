@@ -1,8 +1,7 @@
 <?php
 //start session and check if user is logged in or not and if not redirect to login page 
 session_start();
-if(!isset($_SESSION['user_id']))
-{
+if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
 }
 ?>
@@ -42,10 +41,12 @@ $selected_content_id = (string) @$_GET['content_id'] ?? '';
     <link rel="stylesheet" href="assets/css/Ultimate-Accordion-with-caret-icon.css">
     <link rel="stylesheet" href="assets/css/Ultimate-Sidebar-Menu-BS5.css">
 
+    
+
+
 </head>
 
 <body>
-
     <?php include 'layouts/side navbar.php' ?>
 
     <h1 id='weekHeading' class="display-3 text-center" style="text-align: center;color: rgb(255,255,255);margin-bottom: 42px;margin-top: 42px; "><?php if ($lesson_name != null) {
@@ -62,18 +63,19 @@ $selected_content_id = (string) @$_GET['content_id'] ?? '';
                                                                                     echo "Start a lesson to see its task breif.";
                                                                                 }; ?><br><br></p>
     </div>
-    <div>
-        <div class="container text-center" style="margin-top: 55px;"><?php include "./layouts/blockly.php" ?></div>
-    </div>
-    <div class="container text-center">
-        <button onclick="submitCode()" class="btn btn-primary text-truncate border rounded border-light shadow-none float-end tenant-continue-btn" data-bss-hover-animate="pulse" type="button" style="margin-right: 29px;margin-top: 30px;margin-bottom: 50px;background: #360062;">Submit assignment&nbsp;<i class="fas fa-greater-than continue-icon"></i></button>
-    </div>
-    
-    <?php include './layouts/footer.php'; ?>
+    <div data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100" data-aos-once="true">
+        <div>
+            <div class="container text-center" style="margin-top: 55px;"><?php include "./layouts/blockly.php" ?></div>
+        </div>
+        <div class="container text-center">
+            <button onclick="submitCode()" class="btn btn-primary text-truncate border rounded border-light shadow-none float-end tenant-continue-btn" data-bss-hover-animate="pulse" type="button" style="margin-right: 29px;margin-top: 30px;margin-bottom: 50px;background: #360062;">Submit assignment&nbsp;<i class="fas fa-greater-than continue-icon"></i></button>
+        </div>
+
+        <?php include './layouts/footer.php'; ?>
 
     </div>
 
-
+    </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
@@ -106,6 +108,8 @@ $selected_content_id = (string) @$_GET['content_id'] ?? '';
                 }
             }
         }
+
+     
     </script>
 
 

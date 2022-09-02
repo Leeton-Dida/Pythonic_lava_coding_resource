@@ -38,14 +38,14 @@ if(!isset($_SESSION['user_id']))
 
 </head>
 
-<body>
+<body >
 
 
     <?php include 'layouts/side navbar.php' ?>
 
 
     <h1 class="display-3 text-center" style="text-align: center;color: rgb(255,255,255);margin-bottom: 42px;margin-top: 42px;">Practice</h1>
-    <div style="margin-bottom: 104px;">
+    <div style="margin-bottom: 104px;" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100" data-aos-once="true">
         <div class="container text-center" style="margin-top: 55px;">
 
         <?php include "./layouts/blockly.php"?>

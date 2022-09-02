@@ -11,9 +11,12 @@ $profile_image = mysqli_fetch_assoc($result);
 $profile_image = $profile_image['profile_image'];
 
 ?>
+<head>
+    
 
+</head>
 
-<div><a class="btn btn-primary btn-customized open-menu" role="button" style="margin-top: 2px;padding-top: 9px;padding-bottom: 10px;margin-right: 1687px;"><i class="fa fa-navicon"></i>&nbsp;Menu</a>
+<div><a class="btn btn-primary btn-customized open-menu" role="button" style="margin-top: 2px;padding-top: 9px;padding: 15px;margin-right: 1410px;"><i class="fa fa-navicon"></i>&nbsp;Menu</a>
     <div class="sidebar" style="background: rgb(33,37,41);">
         <a href="controller/profileController.php">
             <img class="rounded-circle" loading="lazy" src="
@@ -117,7 +120,7 @@ $profile_image = $profile_image['profile_image'];
 
                                         echo "<div class='form-check'>
                                                 
-                                                <button id = '$contentId' onclick = 'submitForm()' type='button'  class='btn btn-outline-light' for='formCheck-1' style='color: rgb(255,255,255); background: #3B3B3B'>" . $title . ': ' . $contentId . "</button>
+                                                <button id = '$contentId' onclick = 'submitForm()' type='button'  class='btn btn-outline-light' for='formCheck-1' style='color: rgb(255,255,255); background: #3B3B3B'>" . $title . "</button>
                                                 
                                                 <label id = 'status' style='margin-left : 10px'> ";
 

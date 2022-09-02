@@ -172,7 +172,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             </div>
 						<div class="form-group">
                                 <label>Code</label>
-                                <input type="text" name="code" maxlength="1000"class="form-control" value="<?php echo $code; ?>">
+                                <textarea type="text" name="code" maxlength="1000"class="form-control" value="<?php echo $code; ?>"><?php echo $code; ?></textarea>
                                 <span class="form-text"><?php echo $code_err; ?></span>
                             </div>
 						<div class="form-group">

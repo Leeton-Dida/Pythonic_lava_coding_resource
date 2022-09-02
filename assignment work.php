@@ -37,6 +37,9 @@ $assignment_id = $_GET['id'];
     <link rel="stylesheet" href="assets/css/Ultimate-Accordion-with-caret-icon.css">
     <link rel="stylesheet" href="assets/css/Ultimate-Sidebar-Menu-BS5.css">
 
+
+    <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+    <script src="../assets/js/adminJs.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -67,8 +70,8 @@ $assignment_id = $_GET['id'];
                                                                                                                                                         echo "Assignments";
                                                                                                                                                     }; ?></h1>
 
-    <div class="container text-center">
-        <h2 class="display-5 text-center" style="text-align: center;color: rgb(255,255,255);margin-bottom: 42px;margin-top: 78px;">Tasks</h2>
+    <div class="container text-left" style="color: white;">
+        <h2 class="display-5 text-left" style="text-align: left;color: rgb(255,255,255);margin-bottom: 42px;margin-top: 78px;">Tasks</h2>
         <p id="taskDescription" class="text-white" style="margin-bottom: 20px"><?php if ($description != null) {
                                                                                     echo $description;
                                                                                 } else {

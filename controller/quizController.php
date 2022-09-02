@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
     $rdoBtnNameCounter = 0;
     foreach ($quiz_questions as $question) {
         $answer = $_POST['question_' . $rdoBtnNameCounter . '_rdoBtn'] ?? '';
-        if ($answer == $correct_answer) {
+        if ($answer == $correct_answer - 1) {
             $score++;
         }
         $count ++;

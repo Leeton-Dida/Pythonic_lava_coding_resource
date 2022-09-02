@@ -28,7 +28,7 @@
 <body>
 <?php require_once('navbar.php'); ?>
 
-<section style="margin-bottom: 40px;">
+<section style="margin-bottom: 40px;" >
         <div data-bss-parallax-bg="true" style="height: 40px;background: url(&quot;assets/img/971.jpg&quot;) center / cover;margin-top: 70px;">
             <div class="container h-50">
                 <div class="row h-100">

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
@@ -7,20 +8,27 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/6b773fe9e4.js" crossorigin="anonymous"></script>
     <style type="text/css">
-        .page-header h2{
+        .page-header h2 {
             margin-top: 0;
         }
-        table tr td:last-child a{
+
+        table tr td:last-child a {
             margin-right: 5px;
         }
+
         body {
             font-size: 14px;
         }
     </style>
     <link rel="stylesheet" href="../assets/css/styles.css" />
-        <link rel="stylesheet" href="../assets/css/admin.css" />
+    <link rel="stylesheet" href="../assets/css/admin.css" />
+
+    
+    <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+    <script src="../assets/js/adminJs.js" type="text/javascript"></script>
 </head>
 <?php require_once('navbar.php'); ?>
+
 <body>
     <section class="pt-5">
         <div class="container-fluid">
@@ -35,11 +43,11 @@
 
                     <div class="form-row">
                         <form action="student_assignment-index.php" method="get">
-                        <div class="col">
-                          <input type="text" class="form-control" placeholder="Search this table" name="search">
-                        </div>
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Search this table" name="search">
+                            </div>
                     </div>
-                        </form>
+                    </form>
                     <br>
 
                     <?php
@@ -51,10 +59,10 @@
                     $protocol = $_SERVER['SERVER_PROTOCOL'];
                     $domain     = $_SERVER['HTTP_HOST'];
                     $script   = $_SERVER['SCRIPT_NAME'];
-                    $parameters   = $_GET ? $_SERVER['QUERY_STRING'] : "" ;
-                    $protocol=strpos(strtolower($_SERVER['SERVER_PROTOCOL']),'https')
-                                === FALSE ? 'http' : 'https';
-                    $currenturl = $protocol . '://' . $domain. $script . '?' . $parameters;
+                    $parameters   = $_GET ? $_SERVER['QUERY_STRING'] : "";
+                    $protocol = strpos(strtolower($_SERVER['SERVER_PROTOCOL']), 'https')
+                        === FALSE ? 'http' : 'https';
+                    $currenturl = $protocol . '://' . $domain . $script . '?' . $parameters;
 
                     //Pagination
                     if (isset($_GET['pageno'])) {
@@ -64,10 +72,10 @@
                     }
 
                     //$no_of_records_per_page is set on the index page. Default is 10.
-                    $offset = ($pageno-1) * $no_of_records_per_page;
+                    $offset = ($pageno - 1) * $no_of_records_per_page;
 
                     $total_pages_sql = "SELECT COUNT(*) FROM student_assignment";
-                    $result = mysqli_query($link,$total_pages_sql);
+                    $result = mysqli_query($link, $total_pages_sql);
                     $total_rows = mysqli_fetch_array($result)[0];
                     $total_pages = ceil($total_rows / $no_of_records_per_page);
 
@@ -75,17 +83,17 @@
                     $orderBy = array('student_id', 'assignment_id', 'code', 'submitted', 'date', 'mark');
                     $order = 'id';
                     if (isset($_GET['order']) && in_array($_GET['order'], $orderBy)) {
-                            $order = $_GET['order'];
-                        }
+                        $order = $_GET['order'];
+                    }
 
                     //Column sort order
-                    $sortBy = array('asc', 'desc'); $sort = 'desc';
+                    $sortBy = array('asc', 'desc');
+                    $sort = 'desc';
                     if (isset($_GET['sort']) && in_array($_GET['sort'], $sortBy)) {
-                          if($_GET['sort']=='asc') {
-                            $sort='desc';
-                            }
-                    else {
-                        $sort='asc';
+                        if ($_GET['sort'] == 'asc') {
+                            $sort = 'desc';
+                        } else {
+                            $sort = 'asc';
                         }
                     }
 
@@ -94,7 +102,7 @@
                     $count_pages = "SELECT * FROM student_assignment";
 
 
-                    if(!empty($_GET['search'])) {
+                    if (!empty($_GET['search'])) {
                         $search = ($_GET['search']);
                         $sql = "SELECT * FROM student_assignment
                             WHERE CONCAT_WS (student_id,assignment_id,code,submitted,date,mark)
@@ -105,34 +113,33 @@
                             WHERE CONCAT_WS (student_id,assignment_id,code,submitted,date,mark)
                             LIKE '%$search%'
                             ORDER BY $order $sort";
-                    }
-                    else {
+                    } else {
                         $search = "";
                     }
 
-                    if($result = mysqli_query($link, $sql)){
-                        if(mysqli_num_rows($result) > 0){
+                    if ($result = mysqli_query($link, $sql)) {
+                        if (mysqli_num_rows($result) > 0) {
                             if ($result_count = mysqli_query($link, $count_pages)) {
-                               $total_pages = ceil(mysqli_num_rows($result_count) / $no_of_records_per_page);
-                           }
+                                $total_pages = ceil(mysqli_num_rows($result_count) / $no_of_records_per_page);
+                            }
                             $number_of_results = mysqli_num_rows($result_count);
                             echo " " . $number_of_results . " results - Page " . $pageno . " of " . $total_pages;
 
                             echo "<table class='table table-bordered table-striped'>";
-                                echo "<thead>";
-                                    echo "<tr>";
-                                        echo "<th><a href=?search=$search&sort=&order=student_id&sort=$sort>Name</th>";
-										echo "<th><a href=?search=$search&sort=&order=assignment_id&sort=$sort>Assignment title</th>";
-										echo "<th><a href=?search=$search&sort=&order=code&sort=$sort>code</th>";
-										echo "<th><a href=?search=$search&sort=&order=submitted&sort=$sort>Submitted</th>";
-										echo "<th><a href=?search=$search&sort=&order=date&sort=$sort>Date</th>";
-										echo "<th><a href=?search=$search&sort=&order=mark&sort=$sort>Mark</th>";
-										
-                                        echo "<th>Action</th>";
-                                    echo "</tr>";
-                                echo "</thead>";
-                                echo "<tbody>";
-                                while($row = mysqli_fetch_array($result)){
+                            echo "<thead>";
+                            echo "<tr>";
+                            echo "<th><a href=?search=$search&sort=&order=student_id&sort=$sort>Name</th>";
+                            echo "<th><a href=?search=$search&sort=&order=assignment_id&sort=$sort>Assignment title</th>";
+                            echo "<th><a href=?search=$search&sort=&order=code&sort=$sort>code</th>";
+                            echo "<th><a href=?search=$search&sort=&order=submitted&sort=$sort>Submitted</th>";
+                            echo "<th><a href=?search=$search&sort=&order=date&sort=$sort>Date</th>";
+                            echo "<th><a href=?search=$search&sort=&order=mark&sort=$sort>Mark</th>";
+
+                            echo "<th>Action</th>";
+                            echo "</tr>";
+                            echo "</thead>";
+                            echo "<tbody>";
+                            while ($row = mysqli_fetch_array($result)) {
 
                                 //get user Name from users table where id = user_id in admin table
                                 $user_id = $row['student_id'];
@@ -148,40 +155,63 @@
                                 $row_assignment = mysqli_fetch_array($result_assignment);
                                 $assignment_name = $row_assignment['name'];
 
-                                    echo "<tr>";
-                                    echo "<td>" . htmlspecialchars($user_name) . "</td>";echo "<td>" . htmlspecialchars($assignment_name) . "</td>";echo "<td>" . htmlspecialchars($row['code']) . "</td>";echo "<td>" . htmlspecialchars($row['submitted']) . "</td>";echo "<td>" . htmlspecialchars($row['date']) . "</td>";echo "<td>" . htmlspecialchars($row['mark']) . "</td>";
-                                        echo "<td>";
-                                            echo "<a href='student_assignment-read.php?id=". $row['id'] ."' title='View Record' data-toggle='tooltip'><i class='far fa-eye'></i></a>";
-                                            echo "<a href='student_assignment-update.php?id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><i class='far fa-edit'></i></a>";
-                                            echo "<a href='student_assignment-delete.php?id=". $row['id'] ."' title='Delete Record' data-toggle='tooltip'><i class='far fa-trash-alt'></i></a>";
-                                        echo "</td>";
-                                    echo "</tr>";
-                                }
-                                echo "</tbody>";
+                                echo "<tr>";
+                                echo "<td>" . htmlspecialchars($user_name) . "</td>";
+                                echo "<td>" . htmlspecialchars($assignment_name) . "</td>";
+
+                                // echo "<td>" . htmlspecialchars($row['code']) . "</td>";
+                                echo "<td> <textarea type='text' name='code' class='form-control' value= ". htmlspecialchars($row['code']) . ">" . htmlspecialchars($row['code']) . "</textarea></td>";
+
+
+                                echo "<td>" . htmlspecialchars($row['submitted']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['date']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['mark']) . "</td>";
+                                echo "<td>";
+                                echo "<a href='student_assignment-read.php?id=" . $row['id'] . "' title='View Record' data-toggle='tooltip'><i class='far fa-eye'></i></a>";
+                                echo "<a href='student_assignment-update.php?id=" . $row['id'] . "' title='Update Record' data-toggle='tooltip'><i class='far fa-edit'></i></a>";
+                                echo "<a href='student_assignment-delete.php?id=" . $row['id'] . "' title='Delete Record' data-toggle='tooltip'><i class='far fa-trash-alt'></i></a>";
+                                echo "</td>";
+                                echo "</tr>";
+                            }
+                            echo "</tbody>";
                             echo "</table>";
-?>
-                                <ul class="pagination" align-right>
+                    ?>
+                            <ul class="pagination" align-right>
                                 <?php
-                                    $new_url = preg_replace('/&?pageno=[^&]*/', '', $currenturl);
-                                 ?>
-                                    <li class="page-item"><a class="page-link" href="<?php echo $new_url .'&pageno=1' ?>">First</a></li>
-                                    <li class="page-item <?php if($pageno <= 1){ echo 'disabled'; } ?>">
-                                        <a class="page-link" href="<?php if($pageno <= 1){ echo '#'; } else { echo $new_url ."&pageno=".($pageno - 1); } ?>">Prev</a>
-                                    </li>
-                                    <li class="page-item <?php if($pageno >= $total_pages){ echo 'disabled'; } ?>">
-                                        <a class="page-link" href="<?php if($pageno >= $total_pages){ echo '#'; } else { echo $new_url . "&pageno=".($pageno + 1); } ?>">Next</a>
-                                    </li>
-                                    <li class="page-item <?php if($pageno >= $total_pages){ echo 'disabled'; } ?>">
-                                        <a class="page-item"><a class="page-link" href="<?php echo $new_url .'&pageno=' . $total_pages; ?>">Last</a>
-                                    </li>
-                                </ul>
-<?php
+                                $new_url = preg_replace('/&?pageno=[^&]*/', '', $currenturl);
+                                ?>
+                                <li class="page-item"><a class="page-link" href="<?php echo $new_url . '&pageno=1' ?>">First</a></li>
+                                <li class="page-item <?php if ($pageno <= 1) {
+                                                            echo 'disabled';
+                                                        } ?>">
+                                    <a class="page-link" href="<?php if ($pageno <= 1) {
+                                                                    echo '#';
+                                                                } else {
+                                                                    echo $new_url . "&pageno=" . ($pageno - 1);
+                                                                } ?>">Prev</a>
+                                </li>
+                                <li class="page-item <?php if ($pageno >= $total_pages) {
+                                                            echo 'disabled';
+                                                        } ?>">
+                                    <a class="page-link" href="<?php if ($pageno >= $total_pages) {
+                                                                    echo '#';
+                                                                } else {
+                                                                    echo $new_url . "&pageno=" . ($pageno + 1);
+                                                                } ?>">Next</a>
+                                </li>
+                                <li class="page-item <?php if ($pageno >= $total_pages) {
+                                                            echo 'disabled';
+                                                        } ?>">
+                                    <a class="page-item"><a class="page-link" href="<?php echo $new_url . '&pageno=' . $total_pages; ?>">Last</a>
+                                </li>
+                            </ul>
+                    <?php
                             // Free result set
                             mysqli_free_result($result);
-                        } else{
+                        } else {
                             echo "<p class='lead'><em>No records were found.</em></p>";
                         }
-                    } else{
+                    } else {
                         echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
                     }
 
@@ -192,16 +222,17 @@
             </div>
         </div>
     </section>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
+        $(document).ready(function() {
             $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
 </body>
 <footer>
     <?php require_once('../layouts/adminFooter.php'); ?>
-    </footer>
+</footer>
+
 </html>

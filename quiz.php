@@ -50,7 +50,7 @@ if (!isset($_SESSION['user_id'])) {
       ">
         Quiz time 
     </h1>
-    <div class="container" id="quiz_questions_container">
+    <div class="container" id="quiz_questions_container" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100" data-aos-once="true">
         <form class="text-start text-white" id="quiz_form" method="post" action="controller/quizController.php">
 
             <?php

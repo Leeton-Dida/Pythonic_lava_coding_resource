@@ -5,6 +5,13 @@ if (!isset($_SESSION['user'])) {
 }
 ?>
 
+<head>
+
+
+<script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+    <script src="../assets/js/adminJs.js" type="text/javascript"></script>
+</head>
+
 <!-- <nav class="navbar navbar-dark navbar-expand-md textwhite bg-dark text-white shadow-lg py-3" style="transform-style: preserve-3d;opacity: 0.83;filter: brightness(160%) saturate(200%);background: rgb(33, 37, 41);"> -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark ext-white shadow-lg py-3"  style="background: rgb(33, 37, 41);" >
   <a class="navbar-brand nav-link disabled" href="#">Pythonic lava (admin)</a>

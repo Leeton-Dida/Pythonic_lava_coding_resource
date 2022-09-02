@@ -20,17 +20,17 @@ $mark_err = "";
 
 
 // Processing form data when form is submitted
-if(isset($_POST["id"]) && !empty($_POST["id"])){
+if (isset($_POST["id"]) && !empty($_POST["id"])) {
     // Get hidden input value
     $id = $_POST["id"];
 
     $student_id = trim($_POST["student_id"]);
-		$assignment_id = trim($_POST["assignment_id"]);
-		$code = trim($_POST["code"]);
-		$submitted = trim($_POST["submitted"]);
-		$date = trim($_POST["date"]);
-		$mark = trim($_POST["mark"]);
-		
+    $assignment_id = trim($_POST["assignment_id"]);
+    $code = trim($_POST["code"]);
+    $submitted = trim($_POST["submitted"]);
+    $date = trim($_POST["date"]);
+    $mark = trim($_POST["mark"]);
+
 
     // Prepare an update statement
     $dsn = "mysql:host=$db_server;dbname=$db_name;charset=utf8mb4";
@@ -49,7 +49,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     $vars = parse_columns('student_assignment', $_POST);
     $stmt = $pdo->prepare("UPDATE student_assignment SET student_id=?,assignment_id=?,code=?,submitted=?,date=?,mark=? WHERE id=?");
 
-    if(!$stmt->execute([ $student_id,$assignment_id,$code,$submitted,$date,$mark,$id  ])) {
+    if (!$stmt->execute([$student_id, $assignment_id, $code, $submitted, $date, $mark, $id])) {
         echo "Something went wrong. Please try again later.";
         header("location: error.php");
     } else {
@@ -58,29 +58,29 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     }
 } else {
     // Check existence of id parameter before processing further
-	$_GET["id"] = trim($_GET["id"]);
-    if(isset($_GET["id"]) && !empty($_GET["id"])){
+    $_GET["id"] = trim($_GET["id"]);
+    if (isset($_GET["id"]) && !empty($_GET["id"])) {
         // Get URL parameter
         $id =  trim($_GET["id"]);
 
         // Prepare a select statement
         $sql = "SELECT * FROM student_assignment WHERE id = ?";
-        if($stmt = mysqli_prepare($link, $sql)){
+        if ($stmt = mysqli_prepare($link, $sql)) {
             // Set parameters
             $param_id = $id;
 
             // Bind variables to the prepared statement as parameters
-			if (is_int($param_id)) $__vartype = "i";
-			elseif (is_string($param_id)) $__vartype = "s";
-			elseif (is_numeric($param_id)) $__vartype = "d";
-			else $__vartype = "b"; // blob
-			mysqli_stmt_bind_param($stmt, $__vartype, $param_id);
+            if (is_int($param_id)) $__vartype = "i";
+            elseif (is_string($param_id)) $__vartype = "s";
+            elseif (is_numeric($param_id)) $__vartype = "d";
+            else $__vartype = "b"; // blob
+            mysqli_stmt_bind_param($stmt, $__vartype, $param_id);
 
             // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
+            if (mysqli_stmt_execute($stmt)) {
                 $result = mysqli_stmt_get_result($stmt);
 
-                if(mysqli_num_rows($result) == 1){
+                if (mysqli_num_rows($result) == 1) {
                     /* Fetch result row as an associative array. Since the result set
                     contains only one row, we don't need to use while loop */
                     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
@@ -88,28 +88,24 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     // Retrieve individual field value
 
                     $student_id = htmlspecialchars($row["student_id"]);
-					$assignment_id = htmlspecialchars($row["assignment_id"]);
-					$code = htmlspecialchars($row["code"]);
-					$submitted = htmlspecialchars($row["submitted"]);
-					$date = htmlspecialchars($row["date"]);
-					$mark = htmlspecialchars($row["mark"]);
-					
-
-                } else{
+                    $assignment_id = htmlspecialchars($row["assignment_id"]);
+                    $code = htmlspecialchars($row["code"]);
+                    $submitted = htmlspecialchars($row["submitted"]);
+                    $date = htmlspecialchars($row["date"]);
+                    $mark = htmlspecialchars($row["mark"]);
+                } else {
                     // URL doesn't contain valid id. Redirect to error page
                     header("location: error.php");
                     exit();
                 }
-
-            } else{
-                echo "Oops! Something went wrong. Please try again later.<br>".$stmt->error;
+            } else {
+                echo "Oops! Something went wrong. Please try again later.<br>" . $stmt->error;
             }
         }
 
         // Close statement
         mysqli_stmt_close($stmt);
-
-    }  else{
+    } else {
         // URL doesn't contain id parameter. Redirect to error page
         header("location: error.php");
         exit();
@@ -119,14 +115,19 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<link rel="stylesheet" href="../assets/css/styles.css" />
-        <link rel="stylesheet" href="../assets/css/admin.css" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <link rel="stylesheet" href="../assets/css/admin.css" />
+
+    <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+    <script src="../assets/js/adminJs.js" type="text/javascript"></script>
     <meta charset="UTF-8">
     <title>Update Record</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <?php require_once('navbar.php'); ?>
+
 <body>
     <section class="pt-5">
         <div class="container-fluid">
@@ -139,67 +140,67 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
 
                         <div class="form-group">
-                                <label>Student</label>
-                                    <select class="form-control" id="student_id" name="student_id">
-                                    <?php
-                                        $sql = "SELECT *,id FROM users";
-                                        $result = mysqli_query($link, $sql);
-                                        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                                            $duprow = $row;
-                                            unset($duprow["id"]);
-                                            $value = implode(" | ", $duprow);
-                                            if ($row["id"] == $student_id){
-                                            echo '<option value="' . "$row[id]" . '"selected="selected">' . "$value" . '</option>';
-                                            } else {
-                                                echo '<option value="' . "$row[id]" . '">' . "$value" . '</option>';
-                                        }
-                                        }
-                                    ?>
-                                    </select>
-                                <span class="form-text"><?php echo $student_id_err; ?></span>
-                            </div>
-						<div class="form-group">
-                                <label>Assignment</label>
-                                    <select class="form-control" id="assignment_id" name="assignment_id">
-                                    <?php
-                                        $sql = "SELECT *,id FROM assignment";
-                                        $result = mysqli_query($link, $sql);
-                                        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                                            $duprow = $row;
-                                            unset($duprow["id"]);
-                                            $value = implode(" | ", $duprow);
-                                            if ($row["id"] == $assignment_id){
-                                            echo '<option value="' . "$row[id]" . '"selected="selected">' . "$value" . '</option>';
-                                            } else {
-                                                echo '<option value="' . "$row[id]" . '">' . "$value" . '</option>';
-                                        }
-                                        }
-                                    ?>
-                                    </select>
-                                <span class="form-text"><?php echo $assignment_id_err; ?></span>
-                            </div>
-						<div class="form-group">
-                                <label>Code</label>
-                                <input type="text" name="code" maxlength="1000"class="form-control" value="<?php echo $code; ?>">
-                                <span class="form-text"><?php echo $code_err; ?></span>
-                            </div>
-						<div class="form-group">
-                                <label>Submitted</label>
-                                <input type="text" name="submitted" maxlength="10"class="form-control" value="<?php echo $submitted; ?>">
-                                <span class="form-text"><?php echo $submitted_err; ?></span>
-                            </div>
-						<div class="form-group">
-                                <label>Date</label>
-                                <input type="text" name="date" maxlength="25"class="form-control" value="<?php echo $date; ?>">
-                                <span class="form-text"><?php echo $date_err; ?></span>
-                            </div>
-						<div class="form-group">
-                                <label>Mark</label>
-                                <input type="number" name="mark" class="form-control" value="<?php echo $mark; ?>">
-                                <span class="form-text"><?php echo $mark_err; ?></span>
-                            </div>
+                            <label>Student</label>
+                            <select class="form-control" id="student_id" name="student_id">
+                                <?php
+                                $sql = "SELECT *,id FROM users";
+                                $result = mysqli_query($link, $sql);
+                                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                                    $duprow = $row;
+                                    unset($duprow["id"]);
+                                    $value = implode(" | ", $duprow);
+                                    if ($row["id"] == $student_id) {
+                                        echo '<option value="' . "$row[id]" . '"selected="selected">' . "$value" . '</option>';
+                                    } else {
+                                        echo '<option value="' . "$row[id]" . '">' . "$value" . '</option>';
+                                    }
+                                }
+                                ?>
+                            </select>
+                            <span class="form-text"><?php echo $student_id_err; ?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Assignment</label>
+                            <select class="form-control" id="assignment_id" name="assignment_id">
+                                <?php
+                                $sql = "SELECT *,id FROM assignment";
+                                $result = mysqli_query($link, $sql);
+                                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                                    $duprow = $row;
+                                    unset($duprow["id"]);
+                                    $value = implode(" | ", $duprow);
+                                    if ($row["id"] == $assignment_id) {
+                                        echo '<option value="' . "$row[id]" . '"selected="selected">' . "$value" . '</option>';
+                                    } else {
+                                        echo '<option value="' . "$row[id]" . '">' . "$value" . '</option>';
+                                    }
+                                }
+                                ?>
+                            </select>
+                            <span class="form-text"><?php echo $assignment_id_err; ?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Code</label>
+                            <textarea type="text" name="code" maxlength="1000" class="form-control" value="<?php echo $code; ?>"><?php echo $code; ?></textarea>
+                            <span class="form-text"><?php echo $code_err; ?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Submitted</label>
+                            <input type="text" name="submitted" maxlength="10" class="form-control" value="<?php echo $submitted; ?>">
+                            <span class="form-text"><?php echo $submitted_err; ?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="text" name="date" maxlength="25" class="form-control" value="<?php echo $date; ?>">
+                            <span class="form-text"><?php echo $date_err; ?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Mark</label>
+                            <input type="number" name="mark" class="form-control" value="<?php echo $mark; ?>">
+                            <span class="form-text"><?php echo $mark_err; ?></span>
+                        </div>
 
-                        <input type="hidden" name="id" value="<?php echo $id; ?>"/>
+                        <input type="hidden" name="id" value="<?php echo $id; ?>" />
                         <input type="submit" class="btn btn-primary" value="Submit">
                         <a href="student_assignment-index.php" class="btn btn-secondary">Cancel</a>
                     </form>
@@ -210,5 +211,6 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 </body>
 <footer>
     <?php require_once('../layouts/adminFooter.php'); ?>
-    </footer>
+</footer>
+
 </html>

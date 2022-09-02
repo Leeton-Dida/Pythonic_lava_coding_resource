@@ -38,7 +38,7 @@ if(!isset($_SESSION['user_id']))
 
 <body>
 <?php include 'layouts/side navbar.php' ?>
-
+<div data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100" data-aos-once="true">
     <section style="margin-bottom: 40px;">
         <div data-bss-parallax-bg="true" style="height: 518px;background: url(&quot;assets/img/971.jpg&quot;) center / cover;margin-top: px;">
             <div class="container h-100">
@@ -52,6 +52,8 @@ if(!isset($_SESSION['user_id']))
             </div>
         </div>
     </section>
+</div>
+<div data-aos="fade-down" data-aos-duration="1500" data-aos-delay="100" data-aos-once="true">
     <div class="container" id="hero_container">
         <section>
             <div style="height: 600px;background: url(&quot;assets/img/PngItem_156978.png&quot;) center / cover;margin-top: -25px;transform: scale(1.46);"></div>
@@ -121,6 +123,7 @@ if(!isset($_SESSION['user_id']))
             </ul>
         </div>
     </div>
+</div>
    
     <?php include './layouts/footer.php'; ?>
 

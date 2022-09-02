@@ -1,4 +1,4 @@
-<?php  $selected_content_id = (string) @$_GET['content_id'] ?? '';?>
+<?php $selected_content_id = (string) @$_GET['content_id'] ?? ''; ?>
 
 <!DOCTYPE html>
 <html>
@@ -11,11 +11,12 @@
   <script src="./node_modules/blockly/blockly_compressed.js"></script>
   <script src="./node_modules/blockly/javascript_compressed.js"></script>
   <script src="./node_modules/blockly/python_compressed.js"></script>
-  
+
   <script src="./node_modules/blockly/blocks_compressed.js"></script>
   <script src="./node_modules/blockly/msg/en.js"></script>
 
   <script src="./blockly.mjs"></script>
+
 
 </head>
 
@@ -32,22 +33,23 @@
 
 
 
-<div class="container text-center" style="margin-top: 55px;">
-  <!-- textarea to receive generated code -->
-  <form action="functions/student functions.php" id="generatedCodeForm" method="get">
-  <textarea id="generatedCode" style="width: 25%; height: 550px; float: right; resize:none" readonly placeholder="                    Your code is here"></textarea>
-  </form>
+  <div class="container text-center" style="margin-top: 55px;">
+    <!-- textarea to receive generated code -->
+    <form action="functions/student functions.php" id="generatedCodeForm" method="get">
+      <textarea id="generatedCode" style="width: 25%; height: 550px; float: right; resize:none" readonly placeholder="                    Your code is here"></textarea>
+      
+    </form>
 
-<div id="blocklyDiv" style="height: 550px; width: 1000px; margin-bottom: 50px;"></div> 
-<p style="color: white;"><span>Paste your code into the environment below to test it.</span></p>
-  <!-- python interpreter without blocks -->
-  <iframe id = "trinketInterpreter" src="https://trinket.io/embed/python/1238a62f4d?toggleCode=true&runOption=run"  style="margin: top 50px; " width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+    <div id="blocklyDiv" style="height: 550px; width: 1000px; margin-bottom: 50px;"></div>
+    <p style="color: white;"><span>Paste your code into the environment below to test it.</span></p>
+    <!-- python interpreter without blocks -->
+    <iframe id="trinketInterpreter" src="https://trinket.io/embed/python/1238a62f4d?toggleCode=true&runOption=run" style="margin: top 50px; " width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
-</div>
+  </div>
 
 
 
- 
+
   <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
     <category name="Logic" colour="%{BKY_LOGIC_HUE}">
       <category name="If">
@@ -422,25 +424,25 @@
   #get max_blocks from content table
   $sql = "SELECT max_blocks FROM content WHERE id = $selected_content_id";
   $result = mysqli_query($conn, $sql);
-  if(mysqli_num_rows($result) > 0) {
-    while($row = mysqli_fetch_assoc($result)) {
+  if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
       $max_blocks = $row['max_blocks'];
     }
-  }else{
+  } else {
     $max_blocks = 0;
   }
-  
+
   ?>
 
   <script>
     var demoWorkspace = Blockly.inject('blocklyDiv', {
       media: 'https://unpkg.com/blockly/media/',
-      maxBlocks: <?php 
-      if($max_blocks == 0){
-        echo 'Infinity';
-      }else{
-        echo $max_blocks;
-      } ?>,
+      maxBlocks: <?php
+                  if ($max_blocks == 0) {
+                    echo 'Infinity';
+                  } else {
+                    echo $max_blocks;
+                  } ?>,
       toolbox: document.getElementById('toolbox'),
 
       grid: {
@@ -464,7 +466,7 @@
       Blockly.Python.INFINITE_LOOP_TRAP = null;
       var code = Blockly.Python.workspaceToCode(demoWorkspace);
       document.getElementById('generatedCode').value = code;
-    //   alert(code);
+      //   alert(code);
     }
 
     function runCode() {

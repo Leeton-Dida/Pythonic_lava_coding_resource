@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                         <div class="form-group" >
                             <label>Task description</label>
-                            <textarea style="color:black;" type="text" name="task_description" maxlength="300" class="form-control" value="<?php echo $task_description; ?>"></textarea>
+                            <textarea style="color:black;" type="text" name="task_description" class="form-control" value="<?php echo $task_description; ?>"></textarea>
                             <span class="form-text"><?php echo $task_description_err; ?></span>
                         </div>
                         <div class="form-group">

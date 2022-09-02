@@ -42,7 +42,7 @@ include 'layouts/side navbar.php';
 
 
 
-    <div class="container text-white" id="assignments_container" style="margin-top: 52px;">
+    <div class="container text-white" id="assignments_container" style="margin-top: 52px;" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100" data-aos-once="true">
         <h1 class="display-3 text-center">Assignments</h1>
         <div class="accordion bg-dark bg-gradient border rounded border-1 border-dark shadow-lg" role="tablist" id="accordion-2">
             <?php

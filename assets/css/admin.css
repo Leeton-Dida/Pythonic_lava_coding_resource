@@ -18,3 +18,21 @@ div {
 .alert p{
     color: rgb(0, 0, 0)
 }
+
+
+
+
+#myInstance1 {
+    border: 2px dashed #0000ff;
+}
+.nicEdit-selected {
+    border: 2px solid #0000ff !important;
+}
+
+.nicEdit-panel {
+    background-color: #fff !important;
+}
+
+.nicEdit-button {
+    background-color: #fff !important;
+}

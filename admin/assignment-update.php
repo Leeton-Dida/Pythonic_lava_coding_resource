@@ -16,15 +16,15 @@ $due_date_err = "";
 
 
 // Processing form data when form is submitted
-if(isset($_POST["id"]) && !empty($_POST["id"])){
+if (isset($_POST["id"]) && !empty($_POST["id"])) {
     // Get hidden input value
     $id = $_POST["id"];
 
     $week_id = trim($_POST["week_id"]);
-		$name = trim($_POST["name"]);
-		$description = trim($_POST["description"]);
-		$due_date = trim($_POST["due_date"]);
-		
+    $name = trim($_POST["name"]);
+    $description = trim($_POST["description"]);
+    $due_date = trim($_POST["due_date"]);
+
 
     // Prepare an update statement
     $dsn = "mysql:host=$db_server;dbname=$db_name;charset=utf8mb4";
@@ -43,7 +43,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     $vars = parse_columns('assignment', $_POST);
     $stmt = $pdo->prepare("UPDATE assignment SET week_id=?,name=?,description=?,due_date=? WHERE id=?");
 
-    if(!$stmt->execute([ $week_id,$name,$description,$due_date,$id  ])) {
+    if (!$stmt->execute([$week_id, $name, $description, $due_date, $id])) {
         echo "Something went wrong. Please try again later.";
         header("location: error.php");
     } else {
@@ -52,29 +52,29 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     }
 } else {
     // Check existence of id parameter before processing further
-	$_GET["id"] = trim($_GET["id"]);
-    if(isset($_GET["id"]) && !empty($_GET["id"])){
+    $_GET["id"] = trim($_GET["id"]);
+    if (isset($_GET["id"]) && !empty($_GET["id"])) {
         // Get URL parameter
         $id =  trim($_GET["id"]);
 
         // Prepare a select statement
         $sql = "SELECT * FROM assignment WHERE id = ?";
-        if($stmt = mysqli_prepare($link, $sql)){
+        if ($stmt = mysqli_prepare($link, $sql)) {
             // Set parameters
             $param_id = $id;
 
             // Bind variables to the prepared statement as parameters
-			if (is_int($param_id)) $__vartype = "i";
-			elseif (is_string($param_id)) $__vartype = "s";
-			elseif (is_numeric($param_id)) $__vartype = "d";
-			else $__vartype = "b"; // blob
-			mysqli_stmt_bind_param($stmt, $__vartype, $param_id);
+            if (is_int($param_id)) $__vartype = "i";
+            elseif (is_string($param_id)) $__vartype = "s";
+            elseif (is_numeric($param_id)) $__vartype = "d";
+            else $__vartype = "b"; // blob
+            mysqli_stmt_bind_param($stmt, $__vartype, $param_id);
 
             // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
+            if (mysqli_stmt_execute($stmt)) {
                 $result = mysqli_stmt_get_result($stmt);
 
-                if(mysqli_num_rows($result) == 1){
+                if (mysqli_num_rows($result) == 1) {
                     /* Fetch result row as an associative array. Since the result set
                     contains only one row, we don't need to use while loop */
                     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
@@ -82,26 +82,22 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     // Retrieve individual field value
 
                     $week_id = htmlspecialchars($row["week_id"]);
-					$name = htmlspecialchars($row["name"]);
-					$description = htmlspecialchars($row["description"]);
-					$due_date = htmlspecialchars($row["due_date"]);
-					
-
-                } else{
+                    $name = htmlspecialchars($row["name"]);
+                    $description = htmlspecialchars($row["description"]);
+                    $due_date = htmlspecialchars($row["due_date"]);
+                } else {
                     // URL doesn't contain valid id. Redirect to error page
                     header("location: error.php");
                     exit();
                 }
-
-            } else{
-                echo "Oops! Something went wrong. Please try again later.<br>".$stmt->error;
+            } else {
+                echo "Oops! Something went wrong. Please try again later.<br>" . $stmt->error;
             }
         }
 
         // Close statement
         mysqli_stmt_close($stmt);
-
-    }  else{
+    } else {
         // URL doesn't contain id parameter. Redirect to error page
         header("location: error.php");
         exit();
@@ -111,14 +107,20 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<link rel="stylesheet" href="../assets/css/styles.css" />
-        <link rel="stylesheet" href="../assets/css/admin.css" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <link rel="stylesheet" href="../assets/css/admin.css" />
+
+    <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+    <script src="../assets/js/adminJs.js" type="text/javascript"></script>
+
     <meta charset="UTF-8">
     <title>Update Record</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <?php require_once('navbar.php'); ?>
+
 <body>
     <section class="pt-5">
         <div class="container-fluid">
@@ -131,42 +133,42 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
 
                         <div class="form-group">
-                                <label>Week</label>
-                                    <select class="form-control" id="week_id" name="week_id">
-                                    <?php
-                                        $sql = "SELECT *,id FROM weeks";
-                                        $result = mysqli_query($link, $sql);
-                                        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                                            $duprow = $row;
-                                            unset($duprow["id"]);
-                                            $value = implode(" | ", $duprow);
-                                            if ($row["id"] == $week_id){
-                                            echo '<option value="' . "$row[id]" . '"selected="selected">' . "$value" . '</option>';
-                                            } else {
-                                                echo '<option value="' . "$row[id]" . '">' . "$value" . '</option>';
-                                        }
-                                        }
-                                    ?>
-                                    </select>
-                                <span class="form-text"><?php echo $week_id_err; ?></span>
-                            </div>
-						<div class="form-group">
-                                <label>Assignment title</label>
-                                <input type="text" name="name" maxlength="200"class="form-control" value="<?php echo $name; ?>">
-                                <span class="form-text"><?php echo $name_err; ?></span>
-                            </div>
-						<div class="form-group">
-                                <label>Description</label>
-                                <input type="text" name="description" maxlength="250"class="form-control" value="<?php echo $description; ?>">
-                                <span class="form-text"><?php echo $description_err; ?></span>
-                            </div>
-						<div class="form-group">
-                                <label>Due date</label>
-                                <input type="text" name="due_date" maxlength="25"class="form-control" value="<?php echo $due_date; ?>">
-                                <span class="form-text"><?php echo $due_date_err; ?></span>
-                            </div>
+                            <label>Week</label>
+                            <select class="form-control" id="week_id" name="week_id">
+                                <?php
+                                $sql = "SELECT *,id FROM weeks";
+                                $result = mysqli_query($link, $sql);
+                                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                                    $duprow = $row;
+                                    unset($duprow["id"]);
+                                    $value = implode(" | ", $duprow);
+                                    if ($row["id"] == $week_id) {
+                                        echo '<option value="' . "$row[id]" . '"selected="selected">' . "$value" . '</option>';
+                                    } else {
+                                        echo '<option value="' . "$row[id]" . '">' . "$value" . '</option>';
+                                    }
+                                }
+                                ?>
+                            </select>
+                            <span class="form-text"><?php echo $week_id_err; ?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Assignment title</label>
+                            <input type="text" name="name" maxlength="200" class="form-control" value="<?php echo $name; ?>">
+                            <span class="form-text"><?php echo $name_err; ?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea type="text" name="description" maxlength="250" class="form-control" value="<?php echo $description; ?>"><?php echo $description?></textarea>
+                            <span class="form-text"><?php echo $description_err; ?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Due date</label>
+                            <input type="datetime-local" style="width: 225px;"  name="due_date" maxlength="25" class="form-control" value="<?php echo $due_date; ?>">
+                            <span class="form-text"><?php echo $due_date_err; ?></span>
+                        </div>
 
-                        <input type="hidden" name="id" value="<?php echo $id; ?>"/>
+                        <input type="hidden" name="id" value="<?php echo $id; ?>" />
                         <input type="submit" class="btn btn-primary" value="Submit">
                         <a href="assignment-index.php" class="btn btn-secondary">Cancel</a>
                     </form>
@@ -177,5 +179,6 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 </body>
 <footer>
     <?php require_once('../layouts/adminFooter.php'); ?>
-    </footer>
+</footer>
+
 </html>

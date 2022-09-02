@@ -73,12 +73,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 <span class="form-text"><?php echo $question_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>Answer</label>
+                                <label>Answer (e.g. answer 1, answer 2, answer 3, answer 4)</label>
                                 <input type="text" name="answer" maxlength="200"class="form-control" value="<?php echo $answer; ?>">
                                 <span class="form-text"><?php echo $answer_err; ?></span>
                             </div>
 						<div class="form-group">
-                                <label>Correct Answer</label>
+                                <label>Correct Answer (e.g. 1/2/3/4)</label>
                                 <input type="text" name="correctAnswer" maxlength="4"class="form-control" value="<?php echo $correctAnswer; ?>">
                                 <span class="form-text"><?php echo $correctAnswer_err; ?></span>
                             </div>
